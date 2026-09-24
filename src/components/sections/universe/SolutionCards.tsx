@@ -57,7 +57,7 @@ export default function SolutionCards() {
           key={card.name}
           className="group flex flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl"
         >
-          <div className="relative h-[400px] w-full">
+          <div className="relative h-[400px] w-full 2xl:h-[280px]">
             <Image
               src={card.image}
               alt={card.name}
