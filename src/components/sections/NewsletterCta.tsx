@@ -79,7 +79,7 @@ export default function NewsletterCta() {
               />
               <select
                 defaultValue=""
-                className="w-full bg-transparent text-body-sm text-text-muted outline-none"
+                className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
               >
                 <option value="" disabled>
                   Select, Who are you?
