@@ -22,12 +22,12 @@ const contacts = [
 export default function ContactStrip() {
   return (
     <div className="border-t border-border bg-background">
-      <Reveal className="flex items-center justify-between px-20 py-10">
+      <Reveal className="flex flex-wrap items-center justify-between gap-6 px-20 py-10">
         <h2 className="font-heading text-h3 text-primary-hover">
           Speak to a person, not a portal.
         </h2>
 
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-end gap-6">
           {contacts.map((contact) => (
             <a
               key={contact.label}
@@ -39,7 +39,7 @@ export default function ContactStrip() {
               <p className="text-caption text-text-secondary">
                 {contact.label}
               </p>
-              <p className="text-body-lg text-text-primary">
+              <p className="text-body-lg text-text-primary break-words">
                 {contact.value}
               </p>
             </a>

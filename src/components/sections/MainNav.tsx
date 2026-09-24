@@ -44,7 +44,7 @@ export default function MainNav() {
       className={
         scrolled
           ? "sticky top-0 z-50 flex items-center justify-between border-b border-border bg-background/95 px-20 py-3 shadow-lg backdrop-blur-sm transition-[padding,box-shadow,background-color] duration-300 ease-out"
-          : "sticky top-0 z-50 flex items-center justify-between border-b border-border bg-background/90 px-20 py-20 backdrop-blur-sm transition-[padding,box-shadow,background-color] duration-300 ease-out"
+          : "sticky top-0 z-50 flex items-center justify-between border-b border-border bg-background/90 px-20 py-6 backdrop-blur-sm transition-[padding,box-shadow,background-color] duration-300 ease-out"
       }
     >
       <div className="flex h-12 w-[500px] items-center gap-2">
