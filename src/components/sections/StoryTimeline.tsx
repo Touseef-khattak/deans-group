@@ -83,12 +83,10 @@ export default function StoryTimeline() {
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col">
-          {milestones.map((milestone, i) => (
-            <div key={milestone.title} className="relative flex gap-6 pb-6">
-              {i < milestones.length - 1 && (
-                <div className="absolute top-3 left-2 h-full w-px bg-border" />
-              )}
+        <div className="relative flex flex-1 flex-col gap-8">
+          <div className="absolute top-2 bottom-2 left-2 w-px bg-border" />
+          {milestones.map((milestone) => (
+            <div key={milestone.title} className="relative flex gap-6">
               <Image
                 src={
                   milestone.filled
