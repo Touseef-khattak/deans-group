@@ -96,7 +96,7 @@ export default function StoryTimeline() {
                 alt=""
                 width={16}
                 height={16}
-                className="relative z-10 mt-1.5 shrink-0"
+                className="relative z-10 mt-1.5 h-4 w-4 shrink-0 self-start"
               />
               <div className="flex flex-col gap-1">
                 <p className="font-heading text-h3 text-text-primary">
