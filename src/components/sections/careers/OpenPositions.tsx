@@ -48,7 +48,7 @@ export default function OpenPositions() {
         make a lasting impact.
       </p>
 
-      <Reveal stagger className="flex flex-wrap items-start gap-6">
+      <Reveal stagger className="flex flex-wrap gap-6">
         {openings.map((job) => (
           <div
             key={job.no}
@@ -74,7 +74,7 @@ export default function OpenPositions() {
             </div>
             <button
               type="button"
-              className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
+              className="mt-auto flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
             >
               Apply Now
             </button>

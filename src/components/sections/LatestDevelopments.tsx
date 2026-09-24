@@ -58,7 +58,7 @@ export default function LatestDevelopments() {
             </div>
             <button
               type="button"
-              className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
+              className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
             >
               View Project
             </button>

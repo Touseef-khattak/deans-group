@@ -47,7 +47,7 @@ export default function SolutionsGrid() {
         A building-services layer, designed as one system.
       </h2>
 
-      <Reveal stagger className="flex flex-wrap items-start gap-6">
+      <Reveal stagger className="flex flex-wrap gap-6">
         {solutions.map((s) => (
           <div
             key={s.no}
@@ -89,7 +89,7 @@ export default function SolutionsGrid() {
             </div>
             <button
               type="button"
-              className="flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
+              className="mt-auto flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
             >
               Request This
             </button>
