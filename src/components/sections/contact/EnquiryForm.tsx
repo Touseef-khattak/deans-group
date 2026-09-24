@@ -220,12 +220,14 @@ export default function EnquiryForm() {
             className="object-cover"
           />
         </div>
-        <button
-          type="button"
+        <a
+          href="https://wa.me/923163632738?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Deans%20Group%20of%20Companies."
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex h-14 w-full items-center justify-center bg-primary text-button text-text-on-dark"
         >
           Open WhatsApp Chat
-        </button>
+        </a>
       </div>
     </Reveal>
   );
