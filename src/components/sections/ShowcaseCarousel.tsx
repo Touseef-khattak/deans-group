@@ -90,13 +90,12 @@ export default function ShowcaseCarousel() {
             priority={index === 0}
           />
         </div>
-        <div className="absolute bottom-0 left-0 flex w-full flex-col gap-2 p-10">
-          <h3 className="font-heading text-h1 text-text-on-dark">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 from-38% to-black to-[138%]" />
+        <div className="absolute bottom-0 left-0 flex w-[565px] flex-col gap-4 p-10">
+          <h3 className="font-heading text-h3 text-secondary">
             {slide.title}
           </h3>
-          <p className="max-w-xl text-body-lg text-text-on-dark">
-            {slide.description}
-          </p>
+          <p className="text-body-md text-background">{slide.description}</p>
         </div>
       </div>
 
@@ -110,8 +109,8 @@ export default function ShowcaseCarousel() {
               onClick={() => goTo(i)}
               className={
                 i === index
-                  ? "h-1 w-16 rounded-full bg-primary transition-colors"
-                  : "h-1 w-16 rounded-full bg-border transition-colors"
+                  ? "h-[5px] w-[68px] bg-primary transition-colors"
+                  : "h-[5px] w-[68px] bg-border transition-colors"
               }
             />
           ))}
@@ -126,35 +125,17 @@ export default function ShowcaseCarousel() {
             type="button"
             aria-label="Previous"
             onClick={() => goTo(index - 1)}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-warm"
+            className="relative h-14 w-14 shrink-0"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M10 3L5 8L10 13"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-text-primary"
-              />
-            </svg>
+            <Image src="/images/icons/carousel-prev.svg" alt="" fill />
           </button>
           <button
             type="button"
             aria-label="Next"
             onClick={() => goTo(index + 1)}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-primary"
+            className="relative h-14 w-14 shrink-0"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M6 3L11 8L6 13"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-text-on-dark"
-              />
-            </svg>
+            <Image src="/images/icons/carousel-next.svg" alt="" fill />
           </button>
         </div>
       </div>

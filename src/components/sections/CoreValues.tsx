@@ -48,12 +48,12 @@ export default function CoreValues() {
             className="flex flex-col gap-6 border border-border p-8"
           >
             <Image
-              src={`/images/values/${value.icon}.png`}
+              src={`/images/values/${value.icon}.svg`}
               alt=""
               width={56}
               height={56}
             />
-            <h3 className="text-h3 font-heading text-text-primary">
+            <h3 className="text-h4 font-heading text-text-primary">
               {value.title}
             </h3>
             <p className="flex-1 text-body-md text-text-secondary">

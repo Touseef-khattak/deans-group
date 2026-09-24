@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 const contacts = [
@@ -7,7 +6,7 @@ const contacts = [
   { label: "Direct Email", value: "contact@deans.com" },
 ];
 
-export default function ContactBar() {
+export default function ContactStrip() {
   return (
     <div className="border-t border-border bg-background">
       <Reveal className="flex items-center justify-between px-20 py-10">
@@ -31,15 +30,6 @@ export default function ContactBar() {
           ))}
         </div>
       </Reveal>
-
-      <div className="relative h-[133px] w-full">
-        <Image
-          src="/images/misc/skyline-strip.png"
-          alt="Deans Group projects skyline"
-          fill
-          className="object-cover"
-        />
-      </div>
     </div>
   );
 }

@@ -1,23 +1,26 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const leftLinks: [string, string][] = [
-  ["Deans Universe", "دینز یونیورس"],
-  ["Developments", "منصوبے"],
-  ["Hospitality", "مہمان نوازی"],
+const leftLinks: [string, string, string][] = [
+  ["Deans Universe", "دینز یونیورس", "/deans-universe"],
+  ["Developments", "منصوبے", "/developments"],
+  ["Hospitality", "مہمان نوازی", "/hospitality"],
 ];
-const rightLinks: [string, string][] = [
-  ["Solutions", "حل"],
-  ["Industries", "صنعتیں"],
-  ["Career", "ملازمتیں"],
+const rightLinks: [string, string, string][] = [
+  ["Solutions", "حل", "/solutions"],
+  ["Industries", "صنعتیں", "/industries"],
+  ["Career", "ملازمتیں", "/careers"],
 ];
 
 export default function MainNav() {
   const [scrolled, setScrolled] = useState(false);
   const { lang } = useLanguage();
+  const pathname = usePathname();
 
   useEffect(() => {
     let ticking = false;
@@ -45,16 +48,30 @@ export default function MainNav() {
       }
     >
       <div className="flex h-12 w-[500px] items-center gap-2">
-        {leftLinks.map(([en, ur]) => (
-          <div
-            key={en}
-            className="flex h-10 items-center justify-center px-4"
-          >
-            <p className="whitespace-nowrap text-body-sm text-text-secondary">
-              {lang === "ur" ? ur : en}
-            </p>
-          </div>
-        ))}
+        {leftLinks.map(([en, ur, href]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={en}
+              href={href}
+              className={
+                active
+                  ? "flex h-10 items-center justify-center border-b border-primary px-4"
+                  : "flex h-10 items-center justify-center px-4"
+              }
+            >
+              <p
+                className={
+                  active
+                    ? "whitespace-nowrap text-body-sm text-text-primary"
+                    : "whitespace-nowrap text-body-sm text-text-secondary"
+                }
+              >
+                {lang === "ur" ? ur : en}
+              </p>
+            </Link>
+          );
+        })}
       </div>
 
       <a
@@ -76,16 +93,30 @@ export default function MainNav() {
       </a>
 
       <div className="flex h-12 w-[500px] items-center justify-end gap-2">
-        {rightLinks.map(([en, ur]) => (
-          <div
-            key={en}
-            className="flex h-10 flex-1 items-center justify-center px-4"
-          >
-            <p className="whitespace-nowrap text-body-sm text-text-secondary">
-              {lang === "ur" ? ur : en}
-            </p>
-          </div>
-        ))}
+        {rightLinks.map(([en, ur, href]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={en}
+              href={href}
+              className={
+                active
+                  ? "flex h-10 flex-1 items-center justify-center border-b border-primary px-4"
+                  : "flex h-10 flex-1 items-center justify-center px-4"
+              }
+            >
+              <p
+                className={
+                  active
+                    ? "whitespace-nowrap text-body-sm text-text-primary"
+                    : "whitespace-nowrap text-body-sm text-text-secondary"
+                }
+              >
+                {lang === "ur" ? ur : en}
+              </p>
+            </Link>
+          );
+        })}
 
         <a
           href="/contact"

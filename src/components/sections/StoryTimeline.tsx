@@ -77,7 +77,7 @@ export default function StoryTimeline() {
           </div>
           <button
             type="button"
-            className="flex h-12 w-fit items-center justify-center bg-primary px-6 text-body-sm text-text-on-dark"
+            className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
           >
             The Full Story
           </button>
@@ -87,14 +87,18 @@ export default function StoryTimeline() {
           {milestones.map((milestone, i) => (
             <div key={milestone.title} className="relative flex gap-6 pb-6">
               {i < milestones.length - 1 && (
-                <div className="absolute top-3 left-[5px] h-full w-px bg-border" />
+                <div className="absolute top-3 left-2 h-full w-px bg-border" />
               )}
-              <div
-                className={
+              <Image
+                src={
                   milestone.filled
-                    ? "relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full bg-primary"
-                    : "relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border border-primary bg-surface-warm"
+                    ? "/images/icons/timeline-dot-filled.svg"
+                    : "/images/icons/timeline-dot-outline.svg"
                 }
+                alt=""
+                width={16}
+                height={16}
+                className="relative z-10 mt-1.5 shrink-0"
               />
               <div className="flex flex-col gap-1">
                 <p className="font-heading text-h3 text-text-primary">

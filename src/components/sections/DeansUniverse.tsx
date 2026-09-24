@@ -23,32 +23,31 @@ export default function DeansUniverse() {
       <Reveal className="relative flex w-full items-center justify-between">
         <div className="flex w-[550px] flex-col items-start gap-6">
           <p className="text-body-lg text-text-on-dark">Deans Universe</p>
-          <h2 className="font-heading text-h1 leading-tight">
-            <span className="text-primary">Six companies,</span>
-            <br />
-            <span className="text-text-on-dark">one directory.</span>
+          <h2 className="font-heading text-display-lg leading-[72px]">
+            <span className="text-primary">Six companies,</span>{" "}
+            <span className="text-secondary">one directory.</span>
           </h2>
-          <p className="text-body-lg text-text-on-dark">
+          <p className="text-body-md text-text-on-dark">
             Step into our development and experience the options of luxury
             form the moment you arrive.
           </p>
           <button
             type="button"
-            className="flex h-12 items-center justify-center bg-surface-warm px-6 text-body-sm text-text-primary"
+            className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active"
           >
             Explore Deans Universe
           </button>
         </div>
 
-        <div className="grid w-[560px] grid-cols-3 gap-3">
+        <div className="grid w-[739px] grid-cols-3 gap-4">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className="flex flex-col items-center justify-center gap-2 bg-white/10 px-6 py-6 text-center backdrop-blur-sm"
+              className="flex flex-col items-center justify-center gap-2 bg-[rgba(235,235,235,0.15)] p-6 text-center"
               style={i === 3 ? { gridColumnStart: 2 } : undefined}
             >
-              <p className="text-body-sm text-text-on-dark">{stat.label}</p>
-              <p className="font-heading text-h3 text-text-on-dark">
+              <p className="text-body-md text-text-on-dark">{stat.label}</p>
+              <p className="font-heading text-h3 text-secondary">
                 {stat.value}
               </p>
             </div>

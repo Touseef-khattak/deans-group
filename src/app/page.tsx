@@ -12,7 +12,8 @@ import DeansLandscape from "@/components/sections/DeansLandscape";
 import CoreValues from "@/components/sections/CoreValues";
 import BuildingExplorer from "@/components/sections/BuildingExplorer";
 import NewsletterCta from "@/components/sections/NewsletterCta";
-import ContactBar from "@/components/sections/ContactBar";
+import ContactStrip from "@/components/sections/ContactStrip";
+import SkylineStrip from "@/components/sections/SkylineStrip";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -32,7 +33,8 @@ export default function Home() {
       <CoreValues />
       <BuildingExplorer />
       <NewsletterCta />
-      <ContactBar />
+      <ContactStrip />
+      <SkylineStrip />
       <Footer />
     </main>
   );
