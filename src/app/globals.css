@@ -143,3 +143,50 @@ body {
 .bld-gold {
   background-color: var(--color-status-warning);
 }
+
+/* ---- Deans Landscape map: pin popup ---- */
+.maplibregl-popup.geo-popup .maplibregl-popup-content {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(2, 24, 12, 0.18);
+  padding: 16px 18px;
+  min-width: 220px;
+}
+.maplibregl-popup.geo-popup .maplibregl-popup-tip {
+  border-top-color: var(--color-background);
+}
+.geo-popup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.geo-popup-eyebrow {
+  font-family: var(--font-cascadia);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.geo-popup-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+.geo-popup-meta {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0 0 6px;
+}
+.geo-popup-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  width: fit-content;
+}
+.geo-popup-link:hover {
+  text-decoration: underline;
+}
