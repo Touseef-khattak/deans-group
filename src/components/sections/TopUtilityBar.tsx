@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const cities = ["Islamabad", "Peshawar", "Karachi"];
-const links: [string, string][] = [
-  ["About", "ہمارے بارے میں"],
-  ["Blogs", "بلاگ"],
-  ["FAQs", "عام سوالات"],
-  ["News", "خبریں"],
+const links: [string, string, string][] = [
+  ["About", "ہمارے بارے میں", "/about"],
+  ["Blogs", "بلاگ", "/blogs"],
+  ["FAQs", "عام سوالات", "/faqs"],
+  ["News", "خبریں", "/news"],
 ];
 
 export default function TopUtilityBar() {
@@ -35,13 +36,14 @@ export default function TopUtilityBar() {
       </div>
 
       <div className="flex items-center gap-6">
-        {links.map(([en, ur]) => (
-          <p
+        {links.map(([en, ur, href]) => (
+          <Link
             key={en}
+            href={href}
             className="whitespace-nowrap text-caption text-text-on-dark"
           >
             {lang === "ur" ? ur : en}
-          </p>
+          </Link>
         ))}
 
         <button

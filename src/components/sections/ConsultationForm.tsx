@@ -4,7 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
-export default function ConsultationForm() {
+export default function ConsultationForm({
+  heading = "Not sure which company you need? Ask us.",
+}: {
+  heading?: string;
+}) {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -17,7 +21,7 @@ export default function ConsultationForm() {
     <Reveal className="flex items-center gap-16 p-20">
       <div className="flex w-[450px] shrink-0 flex-col gap-6">
         <h2 className="font-heading text-h1 text-text-primary">
-          Not sure which company you need? Ask us.
+          {heading}
         </h2>
         <p className="text-body-md text-text-secondary">
           Tell us what you&rsquo;re sourcing, supplying, or hoping to build

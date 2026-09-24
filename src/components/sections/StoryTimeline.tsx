@@ -47,14 +47,22 @@ const milestones = [
   },
 ];
 
-export default function StoryTimeline() {
+export default function StoryTimeline({
+  heading = "The story starts on Railway Road",
+  headingUr = "ہماری کہانی",
+  imageHeight = 390,
+}: {
+  heading?: string;
+  headingUr?: string;
+  imageHeight?: number;
+}) {
   return (
     <div className="flex flex-col gap-10 bg-surface-warm px-20 py-16">
       <Reveal>
         <T
           as="h2"
-          en="The story starts on Railway Road"
-          ur="ہماری کہانی"
+          en={heading}
+          ur={headingUr}
           className="font-heading text-h1 text-text-primary"
         />
       </Reveal>
@@ -67,7 +75,10 @@ export default function StoryTimeline() {
             years later the family is still building on the same principle:
             put the name on the building, then live up to it.
           </p>
-          <div className="relative h-[390px] w-full">
+          <div
+            className="relative w-full"
+            style={{ height: imageHeight }}
+          >
             <Image
               src="/images/story/railway-road.png"
               alt="Aerial view of Railway Road, Peshawar"

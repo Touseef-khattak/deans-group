@@ -32,12 +32,16 @@ const values = [
   },
 ];
 
-export default function CoreValues() {
+export default function CoreValues({
+  heading = "Our Core Values",
+}: {
+  heading?: string;
+}) {
   return (
     <div className="flex flex-col gap-10 bg-background px-20 py-16">
       <Reveal>
         <h2 className="font-heading text-h1 text-text-primary">
-          Our Core Values
+          {heading}
         </h2>
       </Reveal>
 
