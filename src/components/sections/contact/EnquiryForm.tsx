@@ -87,96 +87,96 @@ export default function EnquiryForm() {
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
               />
             </div>
-            <label className="flex h-14 w-[375px] items-center justify-between gap-2.5 border border-border px-4">
-              <div className="flex flex-1 items-center gap-2.5">
-                <Image
-                  src="/images/icons/click.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                />
-                <select
-                  defaultValue=""
-                  className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
-                >
-                  <option value="" disabled>
-                    Select Country
-                  </option>
-                  <option value="pk">Pakistan</option>
-                  <option value="ae">UAE</option>
-                  <option value="sa">Saudi Arabia</option>
-                  <option value="uk">UK</option>
-                  <option value="us">USA</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+              <Image
+                src="/images/icons/click.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="pointer-events-none"
+              />
+              <select
+                defaultValue=""
+                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+              >
+                <option value="" disabled>
+                  Select Country
+                </option>
+                <option value="pk">Pakistan</option>
+                <option value="ae">UAE</option>
+                <option value="sa">Saudi Arabia</option>
+                <option value="uk">UK</option>
+                <option value="us">USA</option>
+                <option value="other">Other</option>
+              </select>
               <Image
                 src="/images/icons/chevron-down.svg"
                 alt=""
                 width={12}
                 height={6}
+                className="pointer-events-none ml-auto"
               />
-            </label>
-            <label className="flex h-14 w-[375px] items-center justify-between gap-2.5 border border-border px-4">
-              <div className="flex flex-1 items-center gap-2.5">
-                <Image
-                  src="/images/icons/click.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                />
-                <select
-                  defaultValue=""
-                  className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
-                >
-                  <option value="" disabled>
-                    Enquiring about
-                  </option>
-                  <option value="investor">An investor in Pakistan</option>
-                  <option value="overseas">
-                    An overseas Pakistani investor
-                  </option>
-                  <option value="home">Looking for a home</option>
-                  <option value="tenant">A commercial tenant</option>
-                  <option value="partner">A supplier or partner</option>
-                </select>
-              </div>
+            </div>
+            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+              <Image
+                src="/images/icons/click.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="pointer-events-none"
+              />
+              <select
+                defaultValue=""
+                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+              >
+                <option value="" disabled>
+                  Enquiring about
+                </option>
+                <option value="investor">An investor in Pakistan</option>
+                <option value="overseas">
+                  An overseas Pakistani investor
+                </option>
+                <option value="home">Looking for a home</option>
+                <option value="tenant">A commercial tenant</option>
+                <option value="partner">A supplier or partner</option>
+              </select>
               <Image
                 src="/images/icons/chevron-down.svg"
                 alt=""
                 width={12}
                 height={6}
+                className="pointer-events-none ml-auto"
               />
-            </label>
-            <label className="flex h-14 w-[375px] items-center justify-between gap-2.5 border border-border px-4">
-              <div className="flex flex-1 items-center gap-2.5">
-                <Image
-                  src="/images/icons/click.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                />
-                <select
-                  defaultValue=""
-                  className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
-                >
-                  <option value="" disabled>
-                    Select Project
+            </div>
+            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+              <Image
+                src="/images/icons/click.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="pointer-events-none"
+              />
+              <select
+                defaultValue=""
+                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+              >
+                <option value="" disabled>
+                  Select Project
+                </option>
+                {projects.map((p) => (
+                  <option key={p} value={p}>
+                    {p}
                   </option>
-                  {projects.map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                ))}
+              </select>
               <Image
                 src="/images/icons/chevron-down.svg"
                 alt=""
                 width={12}
                 height={6}
+                className="pointer-events-none ml-auto"
               />
-            </label>
+            </div>
             <textarea
               placeholder="Type your message here..."
               className="h-[112px] w-full border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"

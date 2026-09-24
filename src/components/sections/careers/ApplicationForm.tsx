@@ -65,35 +65,35 @@ export default function ApplicationForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <label className="flex h-14 w-[375px] items-center justify-between gap-2.5 border border-border px-4">
-            <div className="flex flex-1 items-center gap-2.5">
-              <Image
-                src="/images/icons/briefcase.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-              <select
-                defaultValue=""
-                className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
-              >
-                <option value="" disabled>
-                  Select Position
+          <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <Image
+              src="/images/icons/briefcase.svg"
+              alt=""
+              width={16}
+              height={16}
+              className="pointer-events-none"
+            />
+            <select
+              defaultValue=""
+              className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+            >
+              <option value="" disabled>
+                Select Position
+              </option>
+              {positions.map((p) => (
+                <option key={p} value={p}>
+                  {p}
                 </option>
-                {positions.map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
-                ))}
-              </select>
-            </div>
+              ))}
+            </select>
             <Image
               src="/images/icons/chevron-down.svg"
               alt=""
               width={12}
               height={6}
+              className="pointer-events-none ml-auto"
             />
-          </label>
+          </div>
           <label className="flex h-14 w-[375px] cursor-pointer items-center justify-between gap-2.5 border border-border px-4">
             <div className="flex flex-1 items-center gap-2.5 overflow-hidden">
               <Image src="/images/icons/file.svg" alt="" width={16} height={16} />

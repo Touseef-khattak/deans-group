@@ -56,34 +56,34 @@ export default function BookingForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <label className="flex h-14 w-[375px] items-center justify-between gap-2.5 border border-border px-4">
-            <div className="flex flex-1 items-center gap-2.5">
-              <Image
-                src="/images/icons/calendar.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-              <select
-                defaultValue=""
-                className="w-full appearance-none bg-transparent text-body-sm text-text-muted outline-none"
-              >
-                <option value="" disabled>
-                  Select Stays Duration
-                </option>
-                <option value="1">1 night</option>
-                <option value="2-3">2–3 nights</option>
-                <option value="4-7">4–7 nights</option>
-                <option value="7+">7+ nights</option>
-              </select>
-            </div>
+          <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <Image
+              src="/images/icons/calendar.svg"
+              alt=""
+              width={16}
+              height={16}
+              className="pointer-events-none"
+            />
+            <select
+              defaultValue=""
+              className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+            >
+              <option value="" disabled>
+                Select Stays Duration
+              </option>
+              <option value="1">1 night</option>
+              <option value="2-3">2–3 nights</option>
+              <option value="4-7">4–7 nights</option>
+              <option value="7+">7+ nights</option>
+            </select>
             <Image
               src="/images/icons/chevron-down.svg"
               alt=""
               width={12}
               height={6}
+              className="pointer-events-none ml-auto"
             />
-          </label>
+          </div>
           <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
             <Image src="/images/icons/bed.svg" alt="" width={16} height={16} />
             <input

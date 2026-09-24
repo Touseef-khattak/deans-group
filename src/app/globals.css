@@ -91,6 +91,11 @@ body {
   color: var(--color-text-primary);
 }
 
+select option {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
 /* ---- 3D building-massing materials (Building Explorer) ---- */
 .bld-stage {
   background:
