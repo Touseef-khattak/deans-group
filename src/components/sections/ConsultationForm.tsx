@@ -31,8 +31,8 @@ export default function ConsultationForm({
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-6">
-        <div className="flex flex-wrap gap-4">
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex h-14 items-center gap-2.5 border border-border px-4">
             <Image
               src="/images/icons/user-circle.svg"
               alt=""
@@ -46,7 +46,7 @@ export default function ConsultationForm({
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 items-center gap-2.5 border border-border px-4">
             <Image
               src="/images/icons/mail.svg"
               alt=""
@@ -62,7 +62,7 @@ export default function ConsultationForm({
           </div>
           <textarea
             placeholder="Type your message here..."
-            className="h-[112px] flex-1 border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+            className="col-span-2 h-[112px] border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
           />
         </div>
 

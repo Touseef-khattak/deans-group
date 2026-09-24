@@ -1,9 +1,22 @@
 import Reveal from "@/components/Reveal";
 
 const contacts = [
-  { label: "Whatsapp", value: "+92 316 363 27 38" },
-  { label: "Direct Line", value: "091 362 37 27" },
-  { label: "Direct Email", value: "contact@deans.com" },
+  {
+    label: "Whatsapp",
+    value: "+92 316 363 27 38",
+    href: "https://wa.me/923163632738",
+    external: true,
+  },
+  {
+    label: "Direct Line",
+    value: "091 362 37 27",
+    href: "tel:0913623727",
+  },
+  {
+    label: "Direct Email",
+    value: "info@deansgroupofcompanies.com",
+    href: "mailto:info@deansgroupofcompanies.com",
+  },
 ];
 
 export default function ContactStrip() {
@@ -16,9 +29,12 @@ export default function ContactStrip() {
 
         <div className="flex gap-6">
           {contacts.map((contact) => (
-            <div
+            <a
               key={contact.label}
-              className="flex w-[220px] flex-col gap-1 border border-border px-4 py-3"
+              href={contact.href}
+              target={contact.external ? "_blank" : undefined}
+              rel={contact.external ? "noopener noreferrer" : undefined}
+              className="flex w-[220px] flex-col gap-1 border border-border px-4 py-3 transition-colors hover:border-primary"
             >
               <p className="text-caption text-text-secondary">
                 {contact.label}
@@ -26,7 +42,7 @@ export default function ContactStrip() {
               <p className="text-body-lg text-text-primary">
                 {contact.value}
               </p>
-            </div>
+            </a>
           ))}
         </div>
       </Reveal>
