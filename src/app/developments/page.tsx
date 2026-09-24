@@ -1,21 +1,21 @@
 import TopUtilityBar from "@/components/sections/TopUtilityBar";
 import MainNav from "@/components/sections/MainNav";
-import UniverseHero from "@/components/sections/universe/UniverseHero";
-import SolutionCards from "@/components/sections/universe/SolutionCards";
-import FitzoneSpotlight from "@/components/sections/universe/FitzoneSpotlight";
+import DevelopmentsHero from "@/components/sections/developments/DevelopmentsHero";
+import BuildingExplorer from "@/components/sections/BuildingExplorer";
+import PortfolioCarousel from "@/components/sections/developments/PortfolioCarousel";
 import ConsultationForm from "@/components/sections/ConsultationForm";
 import ContactStrip from "@/components/sections/ContactStrip";
 import SkylineStrip from "@/components/sections/SkylineStrip";
 import Footer from "@/components/sections/Footer";
 
-export default function DeansUniversePage() {
+export default function DevelopmentsPage() {
   return (
     <main className="flex flex-1 flex-col">
       <TopUtilityBar />
       <MainNav />
-      <UniverseHero />
-      <SolutionCards />
-      <FitzoneSpotlight />
+      <DevelopmentsHero />
+      <BuildingExplorer />
+      <PortfolioCarousel />
       <ConsultationForm />
       <ContactStrip />
       <SkylineStrip />
