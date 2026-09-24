@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 
 export default function SectorPanel({
@@ -6,8 +7,11 @@ export default function SectorPanel({
   tag,
   title,
   description,
+  detail,
   image,
   imageAlt,
+  imageCaption,
+  buttonLabel,
   reverse = false,
   tone = "light",
 }: {
@@ -15,8 +19,11 @@ export default function SectorPanel({
   tag: string;
   title: string;
   description: string;
+  detail?: ReactNode;
   image: string;
   imageAlt: string;
+  imageCaption?: string;
+  buttonLabel?: string;
   reverse?: boolean;
   tone?: "light" | "warm";
 }) {
@@ -34,22 +41,34 @@ export default function SectorPanel({
         {description}
       </p>
       <div className="h-px w-full bg-border" />
-      <button
-        type="button"
-        className={
-          tone === "warm"
-            ? "flex h-14 w-[200px] items-center justify-center bg-background text-button text-primary-active"
-            : "flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active"
-        }
-      >
-        View &amp; Book
-      </button>
+      {detail && (
+        <p className="w-full text-body-md text-text-muted">{detail}</p>
+      )}
+      {buttonLabel && (
+        <button
+          type="button"
+          className={
+            tone === "warm"
+              ? "flex h-14 w-[200px] items-center justify-center bg-background text-button text-primary-active"
+              : "flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active"
+          }
+        >
+          {buttonLabel}
+        </button>
+      )}
     </div>
   );
 
   const media = (
-    <div className="relative h-[400px] w-[600px] shrink-0">
-      <Image src={image} alt={imageAlt} fill className="object-cover" />
+    <div className="flex w-[600px] shrink-0 flex-col gap-3">
+      <div className="relative h-[400px] w-full">
+        <Image src={image} alt={imageAlt} fill className="object-cover" />
+      </div>
+      {imageCaption && (
+        <p className="font-cascadia text-caption text-text-muted">
+          {imageCaption}
+        </p>
+      )}
     </div>
   );
 
