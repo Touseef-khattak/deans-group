@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "@fontsource/cascadia-code/400.css";
+
+:root {
+  --color-primary: #00a650;
+  --color-primary-hover: #054725;
+  --color-primary-active: #02180c;
+  --color-secondary: #fcf4e8;
+  --color-surface: #f9f9f9;
+  --color-surface-warm: #fff6e8;
+  --color-background: #ffffff;
+  --color-border: #d6d7d9;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #303030;
+  --color-text-muted: #898f98;
+  --color-text-on-primary: #02180c;
+  --color-text-on-dark: #ffffff;
+
+  --color-green-100: #cee4d8;
+  --color-green-300: #9cc9b1;
+  --color-green-500: #00a650;
+  --color-status-warning: #ffd748;
+
+  --font-body: var(--font-plus-jakarta-sans), sans-serif;
+  --font-heading: var(--font-lora), serif;
+  --font-cascadia: "Cascadia Code", monospace;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-active: var(--color-primary-active);
+  --color-secondary: var(--color-secondary);
+  --color-surface: var(--color-surface);
+  --color-surface-warm: var(--color-surface-warm);
+  --color-background: var(--color-background);
+  --color-border: var(--color-border);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-on-primary: var(--color-text-on-primary);
+  --color-text-on-dark: var(--color-text-on-dark);
+
+  --color-green-100: var(--color-green-100);
+  --color-green-300: var(--color-green-300);
+  --color-green-500: var(--color-green-500);
+  --color-status-warning: var(--color-status-warning);
+
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-cascadia: var(--font-cascadia);
+
+  /* Figma type scale */
+  --text-caption: 12px;
+  --text-caption--line-height: 18px;
+  --text-caption--letter-spacing: 0.2px;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 22px;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+
+  --text-button: 14px;
+  --text-button--line-height: 20px;
+  --text-button--letter-spacing: 0.3px;
+
+  --text-h4: 20px;
+  --text-h4--line-height: 28px;
+
+  --text-h3-sm: 28px;
+  --text-h3-sm--line-height: 42px;
+
+  --text-h3: 32px;
+  --text-h3--line-height: 42px;
+
+  --text-h1: 48px;
+  --text-h1--line-height: 58px;
+
+  --text-display-lg: 62px;
+  --text-display-lg--line-height: 72px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+/* ---- 3D building-massing materials (Building Explorer) ---- */
+.bld-stage {
+  background:
+    radial-gradient(ellipse at 50% 82%, rgba(0, 166, 80, 0.08), transparent 62%),
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    28px 28px,
+    28px 28px;
+}
+.bld-floorplane {
+  background:
+    radial-gradient(ellipse at center, rgba(2, 24, 12, 0.14), transparent 58%),
+    linear-gradient(rgba(2, 24, 12, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 24, 12, 0.12) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    34px 34px,
+    34px 34px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 38%, transparent 72%);
+}
+.bld-podium {
+  background-color: var(--color-border);
+  background-image:
+    linear-gradient(to top, rgba(2, 24, 12, 0.7) 0 42%, transparent 42%),
+    repeating-linear-gradient(to right, transparent 0 10px, rgba(255, 255, 255, 0.7) 10px 12px);
+}
+.bld-flats {
+  background-color: var(--color-surface-warm);
+  background-image:
+    repeating-linear-gradient(to top, rgba(2, 24, 12, 0.55) 0 5px, transparent 5px 11px),
+    repeating-linear-gradient(to right, var(--color-surface-warm) 0 4px, transparent 4px 14px);
+}
+.bld-glass {
+  background-color: var(--color-green-300);
+  background-image:
+    linear-gradient(to top, rgba(0, 166, 80, 0.5), transparent 22%),
+    repeating-linear-gradient(to top, rgba(2, 24, 12, 0.4) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(to right, rgba(2, 24, 12, 0.4) 0 1px, transparent 1px 12px);
+}
+.bld-core {
+  background-color: var(--color-primary-hover);
+}
+.bld-roof {
+  background-color: var(--color-surface-warm);
+  background-image: radial-gradient(circle at 50% 50%, rgba(2, 24, 12, 0.16) 0 18%, transparent 19%);
+}
+.bld-gold {
+  background-color: var(--color-status-warning);
+}
