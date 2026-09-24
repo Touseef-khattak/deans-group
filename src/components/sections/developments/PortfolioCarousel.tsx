@@ -97,11 +97,11 @@ export default function PortfolioCarousel() {
         The full portfolio
       </h2>
 
-      <Reveal stagger className="grid grid-cols-4 items-start gap-6">
+      <Reveal stagger className="grid grid-cols-4 gap-6">
         {pages[page].map((project) => (
           <div
             key={project.name}
-            className="group flex flex-col gap-6 border border-border bg-background p-4 transition-shadow hover:border-primary hover:shadow-lg"
+            className="group flex h-full flex-col gap-6 border border-border bg-background p-4 transition-shadow hover:border-primary hover:shadow-lg"
           >
             <div className="relative h-[280px] w-full">
               <Image
@@ -124,7 +124,7 @@ export default function PortfolioCarousel() {
             </div>
             <button
               type="button"
-              className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
+              className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
             >
               View Project
             </button>
