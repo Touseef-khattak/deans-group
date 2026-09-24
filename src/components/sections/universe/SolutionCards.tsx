@@ -50,12 +50,12 @@ export default function SolutionCards() {
   return (
     <Reveal
       stagger
-      className="grid grid-cols-1 items-start gap-6 border-t border-border bg-background p-20 md:grid-cols-2 xl:grid-cols-3"
+      className="grid grid-cols-1 gap-6 border-t border-border bg-background p-20 md:grid-cols-2 xl:grid-cols-3"
     >
       {cards.map((card) => (
         <div
           key={card.name}
-          className="group flex flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl"
+          className="group flex h-full flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl"
         >
           <div className="relative h-[400px] w-full 2xl:h-[280px]">
             <Image
@@ -76,7 +76,7 @@ export default function SolutionCards() {
           </p>
           <button
             type="button"
-            className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
+            className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
           >
             Overview
           </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
@@ -79,26 +79,50 @@ const projects = [
   },
 ];
 
-const PAGE_SIZE = 4;
-const pages = Array.from({ length: Math.ceil(projects.length / PAGE_SIZE) }, (_, i) =>
-  projects.slice(i * PAGE_SIZE, i * PAGE_SIZE + PAGE_SIZE),
-);
+const VISIBLE = 4;
+const AUTOPLAY_MS = 4500;
 
 export default function PortfolioCarousel() {
-  const [page, setPage] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  // autoplay — advances one tile at a time, loops infinitely, pauses on hover
+  useEffect(() => {
+    if (paused || reduced) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % projects.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [paused, reduced, tick]);
 
   function goTo(i: number) {
-    setPage((i + pages.length) % pages.length);
+    setIndex((i + projects.length) % projects.length);
+    setTick((t) => t + 1);
   }
 
+  const visible = Array.from(
+    { length: VISIBLE },
+    (_, i) => projects[(index + i) % projects.length],
+  );
+
   return (
-    <div className="flex flex-col gap-10 bg-secondary p-20">
+    <div
+      className="flex flex-col gap-10 bg-secondary p-20"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <h2 className="font-heading text-h1 text-text-primary">
         The full portfolio
       </h2>
 
       <Reveal stagger className="grid grid-cols-4 gap-6">
-        {pages[page].map((project) => (
+        {visible.map((project) => (
           <div
             key={project.name}
             className="group flex h-full flex-col gap-6 border border-border bg-background p-4 transition-shadow hover:border-primary hover:shadow-lg"
@@ -132,41 +156,27 @@ export default function PortfolioCarousel() {
         ))}
       </Reveal>
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {pages.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Show page ${i + 1} of ${pages.length}`}
-              onClick={() => goTo(i)}
-              className={
-                i === page
-                  ? "h-[5px] w-[68px] bg-primary transition-colors"
-                  : "h-[5px] w-[68px] bg-border transition-colors"
-              }
-            />
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            aria-label="Previous"
-            onClick={() => goTo(page - 1)}
-            className="relative h-14 w-14 shrink-0"
-          >
-            <Image src="/images/icons/carousel-prev.svg" alt="" fill />
-          </button>
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={() => goTo(page + 1)}
-            className="relative h-14 w-14 shrink-0"
-          >
-            <Image src="/images/icons/carousel-next.svg" alt="" fill />
-          </button>
-        </div>
+      <div className="flex items-center justify-end gap-3">
+        <span className="font-cascadia text-body-sm text-text-secondary">
+          {String(index + 1).padStart(2, "0")} /{" "}
+          {String(projects.length).padStart(2, "0")}
+        </span>
+        <button
+          type="button"
+          aria-label="Previous"
+          onClick={() => goTo(index - 1)}
+          className="relative h-14 w-14 shrink-0"
+        >
+          <Image src="/images/icons/carousel-prev.svg" alt="" fill />
+        </button>
+        <button
+          type="button"
+          aria-label="Next"
+          onClick={() => goTo(index + 1)}
+          className="relative h-14 w-14 shrink-0"
+        >
+          <Image src="/images/icons/carousel-next.svg" alt="" fill />
+        </button>
       </div>
     </div>
   );
