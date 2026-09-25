@@ -134,8 +134,10 @@ export default function ShowcaseCarousel() {
             style={{
               transform: reduced
                 ? undefined
-                : `scale(${zoomed ? 1.09 : 1.02})`,
-              transition: reduced ? undefined : "transform 7s linear",
+                : `scale(${zoomed ? 1.06 : 1.02})`,
+              transition: reduced
+                ? undefined
+                : `transform ${AUTOPLAY_MS}ms linear`,
             }}
           >
             <Image
