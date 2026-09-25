@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const cards = [
@@ -8,6 +9,7 @@ const cards = [
     name: "Deans Developers",
     description:
       "Commercial, residential and mixed-use development, end to end — from feasibility and financing to handover and asset management.",
+    href: "/developments",
   },
   {
     image: "/images/deans-universe/sector-industries.png",
@@ -15,6 +17,7 @@ const cards = [
     name: "Deans Industries",
     description:
       "Manufacturing and supply for construction and industry, with an established international supplier network.",
+    href: "/industries#deans-industries",
   },
   {
     image: "/images/deans-universe/sector-electrify.png",
@@ -22,6 +25,7 @@ const cards = [
     name: "Electrify Solutions",
     description:
       "Batteries, circuit breakers and electrical distribution equipment — now framed by the client as a renewable-energy line, not only electrical goods.",
+    href: "/industries#electrify-solutions",
   },
   {
     image: "/images/deans-universe/sector-fitzone.png",
@@ -29,6 +33,7 @@ const cards = [
     name: "Fitzone Gym",
     description:
       "Fitzone clubs sit inside Deans residential — the semi-Olympic pool & fitness club at Deans Complex, the indoor pool and gymnasium at Deans Heights",
+    href: "#fitzone",
   },
   {
     image: "/images/deans-universe/sector-aurora.png",
@@ -36,6 +41,7 @@ const cards = [
     name: "Aroura Industries",
     description:
       "Industrial holdings operating alongside Deans Industries. A dedicated company profile follows.",
+    href: "/industries#aurora-industries",
   },
   {
     image: "/images/deans-universe/sector-hospitality.png",
@@ -43,6 +49,7 @@ const cards = [
     name: "Deans Hospitality",
     description:
       "Hotels and resorts with an online booking flow, from enquiry through to reservation.",
+    href: "/hospitality",
   },
 ];
 
@@ -74,12 +81,12 @@ export default function SolutionCards() {
           <p className="text-body-md text-text-secondary transition-colors group-hover:text-text-on-dark">
             {card.description}
           </p>
-          <button
-            type="button"
+          <Link
+            href={card.href}
             className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
           >
             Overview
-          </button>
+          </Link>
         </div>
       ))}
     </Reveal>

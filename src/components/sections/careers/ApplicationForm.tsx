@@ -23,7 +23,7 @@ export default function ApplicationForm() {
   }
 
   return (
-    <Reveal className="flex items-center gap-16 p-20">
+    <Reveal id="apply" className="flex items-center gap-16 p-20">
       <div className="flex w-[450px] shrink-0 flex-col gap-6">
         <h2 className="font-heading text-h1 text-text-primary">
           Apply for any open position

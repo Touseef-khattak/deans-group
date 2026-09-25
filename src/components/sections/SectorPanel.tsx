@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 
 export default function SectorPanel({
+  id,
   number,
   tag,
   title,
@@ -12,9 +14,11 @@ export default function SectorPanel({
   imageAlt,
   imageCaption,
   buttonLabel,
+  buttonHref,
   reverse = false,
   tone = "light",
 }: {
+  id?: string;
   number: string;
   tag: string;
   title: string;
@@ -24,6 +28,7 @@ export default function SectorPanel({
   imageAlt: string;
   imageCaption?: string;
   buttonLabel?: string;
+  buttonHref?: string;
   reverse?: boolean;
   tone?: "light" | "warm";
 }) {
@@ -44,9 +49,9 @@ export default function SectorPanel({
       {detail && (
         <p className="w-full text-body-md text-text-muted">{detail}</p>
       )}
-      {buttonLabel && (
-        <button
-          type="button"
+      {buttonLabel && buttonHref && (
+        <Link
+          href={buttonHref}
           className={
             tone === "warm"
               ? "flex h-14 w-[200px] items-center justify-center bg-background text-button text-primary-active"
@@ -54,7 +59,7 @@ export default function SectorPanel({
           }
         >
           {buttonLabel}
-        </button>
+        </Link>
       )}
     </div>
   );
@@ -74,6 +79,7 @@ export default function SectorPanel({
 
   return (
     <Reveal
+      id={id}
       className={
         tone === "warm"
           ? "flex items-center gap-20 border-t border-border bg-surface-warm p-20"

@@ -91,6 +91,10 @@ body {
   color: var(--color-text-primary);
 }
 
+[id] {
+  scroll-margin-top: 100px;
+}
+
 select option {
   background-color: var(--color-background);
   color: var(--color-text-primary);

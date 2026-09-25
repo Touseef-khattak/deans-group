@@ -56,10 +56,12 @@ export default function Reveal({
   children,
   className,
   stagger = false,
+  id,
 }: {
   children: ReactNode;
   className?: string;
   stagger?: boolean;
+  id?: string;
 }) {
   const { ref, phase } = usePhase();
 
@@ -68,7 +70,7 @@ export default function Reveal({
       ReactElement<{ style?: CSSProperties }>[];
 
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} id={id} className={className}>
         {items.map((child, i) =>
           cloneElement(child, {
             key: child.key ?? i,
@@ -91,6 +93,7 @@ export default function Reveal({
   return (
     <div
       ref={ref}
+      id={id}
       className={className}
       style={
         phase === "plain"

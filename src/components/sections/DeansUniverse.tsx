@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const stats = [
@@ -31,12 +32,12 @@ export default function DeansUniverse() {
             Step into our development and experience the options of luxury
             form the moment you arrive.
           </p>
-          <button
-            type="button"
+          <Link
+            href="/deans-universe"
             className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active"
           >
             Explore Deans Universe
-          </button>
+          </Link>
         </div>
 
         <div className="grid w-[739px] grid-cols-3 gap-4">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { T } from "@/components/LanguageProvider";
 
@@ -61,12 +62,12 @@ export default function NewsInvestors() {
             <p className="line-clamp-2 flex-1 text-body-md text-text-secondary">
               {article.excerpt}
             </p>
-            <button
-              type="button"
+            <Link
+              href="/news"
               className="flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active"
             >
               Read More
-            </button>
+            </Link>
           </div>
         ))}
       </Reveal>

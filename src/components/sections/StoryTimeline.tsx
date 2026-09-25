@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { T } from "@/components/LanguageProvider";
 
@@ -51,10 +52,12 @@ export default function StoryTimeline({
   heading = "The story starts on Railway Road",
   headingUr = "ہماری کہانی",
   imageHeight = 390,
+  showButton = true,
 }: {
   heading?: string;
   headingUr?: string;
   imageHeight?: number;
+  showButton?: boolean;
 }) {
   return (
     <div className="flex flex-col gap-10 bg-surface-warm px-20 py-16">
@@ -86,12 +89,14 @@ export default function StoryTimeline({
               className="object-cover"
             />
           </div>
-          <button
-            type="button"
-            className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
-          >
-            The Full Story
-          </button>
+          {showButton && (
+            <Link
+              href="/about"
+              className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
+            >
+              The Full Story
+            </Link>
+          )}
         </div>
 
         <div className="relative flex flex-1 flex-col gap-8">

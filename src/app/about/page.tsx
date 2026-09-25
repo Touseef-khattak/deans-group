@@ -22,7 +22,11 @@ export default function AboutPage() {
       <BannerStrip />
       <StatsBar />
       <CompanyOverview />
-      <StoryTimeline heading="How we got here" imageHeight={486} />
+      <StoryTimeline
+        heading="How we got here"
+        imageHeight={486}
+        showButton={false}
+      />
       <Leadership />
       <CoreValues heading="How do we work?" />
       <ProfileCta />

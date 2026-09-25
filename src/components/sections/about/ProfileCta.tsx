@@ -1,9 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const downloads = [
-  { label: "Group Profile", value: "PDF — request a copy" },
-  { label: "Portfolio", value: "All 11 projects" },
+  {
+    label: "Group Profile",
+    value: "PDF — request a copy",
+    href: "mailto:info@deansgroupofcompanies.com?subject=Group%20Profile%20request",
+  },
+  { label: "Portfolio", value: "All 11 projects", href: "/developments" },
 ];
 
 export default function ProfileCta() {
@@ -21,9 +26,9 @@ export default function ProfileCta() {
         </p>
         <div className="flex w-[600px] items-center justify-end gap-4">
           {downloads.map((d) => (
-            <button
+            <Link
               key={d.label}
-              type="button"
+              href={d.href}
               className="flex w-[272px] flex-col items-start justify-center gap-3 bg-primary-hover p-4 text-left"
             >
               <p className="font-cascadia text-caption text-secondary">
@@ -40,7 +45,7 @@ export default function ProfileCta() {
                   height={24}
                 />
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </Reveal>

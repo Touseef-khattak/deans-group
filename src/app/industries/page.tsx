@@ -17,6 +17,7 @@ export default function IndustriesPage() {
       <IndustriesHero />
 
       <SectorPanel
+        id="deans-industries"
         number="01"
         tag="Industrial manufacturing"
         title="Deans Industries"
@@ -34,6 +35,7 @@ export default function IndustriesPage() {
       />
 
       <SectorPanel
+        id="aurora-industries"
         number="02"
         tag="Industrial holdings"
         title="Aurora Industries"
@@ -47,6 +49,7 @@ export default function IndustriesPage() {
       />
 
       <SectorPanel
+        id="electrify-solutions"
         number="03"
         tag="Renewable energy"
         title="Electrify Solutions"

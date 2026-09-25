@@ -6,8 +6,10 @@ import Reveal from "@/components/Reveal";
 
 export default function ConsultationForm({
   heading = "Not sure which company you need? Ask us.",
+  id,
 }: {
   heading?: string;
+  id?: string;
 }) {
   const [submitted, setSubmitted] = useState(false);
 
@@ -18,7 +20,7 @@ export default function ConsultationForm({
   }
 
   return (
-    <Reveal className="flex items-center gap-16 p-20">
+    <Reveal id={id} className="flex items-center gap-16 p-20">
       <div className="flex w-[450px] shrink-0 flex-col gap-6">
         <h2 className="font-heading text-h1 text-text-primary">
           {heading}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const solutions = [
@@ -87,12 +88,12 @@ export default function SolutionsGrid() {
                 {s.runningAt}
               </p>
             </div>
-            <button
-              type="button"
+            <Link
+              href="#consultation"
               className="mt-auto flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active transition-colors group-hover:bg-primary-hover group-hover:text-surface-warm"
             >
               Request This
-            </button>
+            </Link>
           </div>
         ))}
       </Reveal>

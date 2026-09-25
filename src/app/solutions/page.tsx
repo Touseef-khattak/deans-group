@@ -14,7 +14,7 @@ export default function SolutionsPage() {
       <MainNav />
       <SolutionsHero />
       <SolutionsGrid />
-      <ConsultationForm heading="Request a consultation" />
+      <ConsultationForm id="consultation" heading="Request a consultation" />
       <ContactStrip />
       <SkylineStrip />
       <Footer />

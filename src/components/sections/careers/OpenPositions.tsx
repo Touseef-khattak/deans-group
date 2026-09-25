@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const openings = [
@@ -72,12 +73,12 @@ export default function OpenPositions() {
               <p className="text-text-muted">Qualification</p>
               <p className="text-text-primary">{job.qualification}</p>
             </div>
-            <button
-              type="button"
+            <Link
+              href="#apply"
               className="mt-auto flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
             >
               Apply Now
-            </button>
+            </Link>
           </div>
         ))}
       </Reveal>

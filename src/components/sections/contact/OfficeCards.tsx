@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
+function mapsHref(address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
 const offices = [
   {
     tag: "Head office - Peshawar",
@@ -81,12 +85,14 @@ export default function OfficeCards() {
                 <p className="text-text-primary">{office.leasing}</p>
               </div>
             </div>
-            <button
-              type="button"
+            <a
+              href={mapsHref(office.address)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active"
             >
               Get Directions
-            </button>
+            </a>
           </div>
         ))}
       </Reveal>

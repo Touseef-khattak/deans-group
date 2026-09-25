@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 export default function FitzoneSpotlight() {
   return (
-    <Reveal className="flex flex-col gap-10 bg-secondary p-20">
+    <Reveal id="fitzone" className="flex flex-col gap-10 bg-secondary p-20">
       <div className="flex flex-col gap-10">
         <h2 className="font-heading text-h1 text-text-primary">
           Fitzone Gym

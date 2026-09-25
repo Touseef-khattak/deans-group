@@ -23,6 +23,7 @@ export default function HospitalityPage() {
         image="/images/hospitality/sector-hotel.png"
         imageAlt="A Deans Hospitality hotel room"
         buttonLabel="View & Book"
+        buttonHref="#booking"
       />
       <SectorPanel
         number="02"
@@ -32,6 +33,7 @@ export default function HospitalityPage() {
         image="/images/hospitality/sector-resort.png"
         imageAlt="A Deans Hospitality resort pool"
         buttonLabel="View & Book"
+        buttonHref="#booking"
         reverse
         tone="warm"
       />
