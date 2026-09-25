@@ -141,7 +141,7 @@ export default function ShowcaseCarousel() {
 
   return (
     <div className="flex flex-col items-center gap-6 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
-      <div className="relative h-[260px] w-full max-w-[1280px] overflow-hidden sm:h-[340px] md:h-[420px] lg:h-[498px]">
+      <div className="relative h-[260px] w-full overflow-hidden sm:h-[340px] md:h-[420px] lg:h-[498px]">
         <div className="absolute inset-0">
           <div
             className="absolute inset-0"
@@ -197,7 +197,7 @@ export default function ShowcaseCarousel() {
         </div>
       </div>
 
-      <div className="flex w-full max-w-[1280px] flex-wrap items-center justify-between gap-4">
+      <div className="flex w-full flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           {slides.map((s, i) => (
             <button
