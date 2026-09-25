@@ -1,6 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="tabler-icon-home-2">
 <rect width="56" height="56" fill="#FCF4E8"/>
-<path id="Vector" d="M26 28H30V32H26V28Z" stroke="#02180C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector" d="M22.75 28L21.25 28L28 21.25L34.75 28L33.25 28M22.75 28V33.25C22.75 33.6478 22.908 34.0294 23.1893 34.3107C23.4706 34.592 23.8522 34.75 24.25 34.75H31.75C32.1478 34.75 32.5294 34.592 32.8107 34.3107C33.092 34.0294 33.25 33.6478 33.25 33.25V28M25.75 34.75V30.25C25.75 29.8522 25.908 29.4706 26.1893 29.1893C26.4706 28.908 26.8522 28.75 27.25 28.75H28.75C29.1478 28.75 29.5294 28.908 29.8107 29.1893C30.092 29.4706 30.25 29.8522 30.25 30.25V34.75" stroke="#02180C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>

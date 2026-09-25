@@ -52,7 +52,7 @@ export default function CoreValues({
         {values.map((value) => (
           <div
             key={value.title}
-            className="flex flex-col gap-6 border border-border p-8"
+            className="flex flex-col gap-8 border border-border p-6"
           >
             <Image
               src={`/images/values/${value.icon}.svg`}
@@ -60,13 +60,15 @@ export default function CoreValues({
               width={56}
               height={56}
             />
-            <h3 className="text-h4 font-heading text-text-primary">
-              {value.title}
-            </h3>
-            <p className="flex-1 text-body-md text-text-secondary">
-              {value.description}
-            </p>
-            <p className="font-cascadia text-caption text-text-secondary">
+            <div className="flex flex-1 flex-col gap-2">
+              <h3 className="text-h4 font-heading text-text-primary">
+                {value.title}
+              </h3>
+              <p className="text-body-sm text-text-muted">
+                {value.description}
+              </p>
+            </div>
+            <p className="font-cascadia text-[18px] leading-[24px] text-text-muted">
               {value.tag}
             </p>
           </div>
