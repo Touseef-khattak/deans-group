@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { T } from "@/components/LanguageProvider";
 
@@ -10,6 +13,7 @@ const milestones = [
     description:
       "60,000 sq ft on Railway Road No. 2 — 48 shops, 43 offices, and the group's first name on a façade",
     filled: false,
+    image: "/images/story/railway-road.png",
   },
   {
     year: "1982",
@@ -17,6 +21,7 @@ const milestones = [
     description:
       "Kohat Road. 42 apartments across a multi-tower residential complex — the move into housing.",
     filled: true,
+    image: "/images/story/shahab-flats.png",
   },
   {
     year: "1998",
@@ -24,6 +29,7 @@ const milestones = [
     description:
       "Mr. Nasir Jamal brings together family capital and an investor network to win the historic 57-kanal site at public auction.",
     filled: false,
+    image: "/images/showcase/deans-trade-centre.png",
   },
   {
     year: "2004",
@@ -31,6 +37,7 @@ const milestones = [
     description:
       "Deans Shopping Mall opens on Tariq Road — 350 retail units, and a national footprint.",
     filled: true,
+    image: "/images/developments/deans-shopping-mall.png",
   },
   {
     year: "2006-07",
@@ -38,6 +45,7 @@ const milestones = [
     description:
       "Deans Apartments and Deans Complex establish the group in premium Peshawar residential.",
     filled: false,
+    image: "/images/developments/deans-complex.png",
   },
   {
     year: "Today",
@@ -45,6 +53,7 @@ const milestones = [
     description:
       "Development, industry, fitness, energy and — new as of Aug 2026 — hospitality, led by Chairman & Chief Executive Mr. Nasir Jamal.",
     filled: true,
+    image: "/images/misc/skyline-strip-flat.png",
   },
 ];
 
@@ -59,6 +68,9 @@ export default function StoryTimeline({
   imageHeight?: number;
   showButton?: boolean;
 }) {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const activeIndex = hovered ?? 0;
+
   return (
     <div className="flex flex-col gap-10 bg-surface-warm px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
@@ -82,12 +94,17 @@ export default function StoryTimeline({
             className="relative w-full"
             style={{ height: imageHeight }}
           >
-            <Image
-              src="/images/story/railway-road.png"
-              alt="Aerial view of Railway Road, Peshawar"
-              fill
-              className="object-cover"
-            />
+            {milestones.map((milestone, i) => (
+              <Image
+                key={milestone.image}
+                src={milestone.image}
+                alt={milestone.title}
+                fill
+                priority={i === 0}
+                className="object-cover transition-opacity duration-500 ease-in-out"
+                style={{ opacity: i === activeIndex ? 1 : 0 }}
+              />
+            ))}
           </div>
           {showButton && (
             <Link
@@ -101,8 +118,13 @@ export default function StoryTimeline({
 
         <div className="relative flex flex-1 flex-col gap-8">
           <div className="absolute top-2 bottom-2 left-2 w-px bg-border" />
-          {milestones.map((milestone) => (
-            <div key={milestone.title} className="relative flex gap-6">
+          {milestones.map((milestone, i) => (
+            <div
+              key={milestone.title}
+              className="relative flex gap-6"
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
               <Image
                 src={
                   milestone.filled
@@ -115,7 +137,12 @@ export default function StoryTimeline({
                 className="relative z-10 mt-1.5 h-4 w-4 shrink-0 self-start"
               />
               <div className="flex flex-col gap-1">
-                <p className="font-heading text-h3 text-text-primary">
+                <p
+                  className={
+                    "font-heading text-h3 transition-colors " +
+                    (i === hovered ? "text-primary" : "text-text-primary")
+                  }
+                >
                   <span className="font-cascadia text-body-sm text-text-secondary">
                     {milestone.year}{" "}
                   </span>
