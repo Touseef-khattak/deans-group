@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const AUTOPLAY_MS = 6500;
+const AUTOPLAY_MS = 3000;
+const SLIDE_MS = 900;
+const EASE = "cubic-bezier(.22,1,.36,1)";
 
 const slides = [
   {
@@ -31,25 +33,81 @@ const slides = [
 
 export default function ShowcaseCarousel() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
+  const [entering, setEntering] = useState(false);
+  const [incomingTransition, setIncomingTransition] = useState(false);
+  const [contentShown, setContentShown] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [zoomed, setZoomed] = useState(false);
   const [tick, setTick] = useState(0);
+
+  const indexRef = useRef(0);
+  const busyRef = useRef(false);
+
+  useEffect(() => {
+    indexRef.current = index;
+  }, [index]);
 
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
-  // autoplay — pauses on hover, restarts its countdown on manual navigation
+  function goTo(target: number) {
+    const next = (target + slides.length) % slides.length;
+    if (next === indexRef.current || busyRef.current) return;
+    busyRef.current = true;
+    setContentShown(false);
+
+    if (reduced) {
+      setIndex(next);
+      setContentShown(true);
+      busyRef.current = false;
+      return;
+    }
+
+    setIncomingIndex(next);
+    setIncomingTransition(true);
+    // double rAF: let the incoming layer paint at its off-screen start
+    // position with the transition already enabled, then move it
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setEntering(true));
+    });
+  }
+
+  // autoplay — reads the latest index via ref so the interval never goes
+  // stale, and restarts its countdown whenever the visitor navigates manually
   useEffect(() => {
-    if (paused || reduced) return;
+    if (reduced) return;
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % slides.length);
+      goTo(indexRef.current + 1);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [paused, reduced, tick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduced, tick]);
 
-  // slow Ken-Burns drift on the active slide: 1.02 -> 1.09 over 7s, resets each slide change
+  // once the incoming image finishes sliding fully into view, settle it —
+  // swap the settled slide and snap the incoming layer away untransitioned
+  useEffect(() => {
+    if (!entering) return;
+    const settle = setTimeout(() => {
+      if (incomingIndex !== null) setIndex(incomingIndex);
+      setIncomingTransition(false);
+      setEntering(false);
+      setIncomingIndex(null);
+      busyRef.current = false;
+    }, SLIDE_MS);
+    return () => clearTimeout(settle);
+  }, [entering, incomingIndex]);
+
+  // caption slides up ~150ms after the image settles — sequential, not
+  // simultaneous
+  useEffect(() => {
+    if (contentShown) return;
+    const reveal = setTimeout(() => setContentShown(true), SLIDE_MS + 150);
+    return () => clearTimeout(reveal);
+  }, [contentShown]);
+
+  // Ken-Burns drift on the settled slide: 1.02 -> 1.09 over 7s
   useEffect(() => {
     setZoomed(false);
     const raf1 = requestAnimationFrame(() => {
@@ -59,39 +117,60 @@ export default function ShowcaseCarousel() {
     return () => cancelAnimationFrame(raf1);
   }, [index]);
 
-  function goTo(i: number) {
-    setIndex((i + slides.length) % slides.length);
+  function manualGoTo(i: number) {
+    goTo(i);
     setTick((t) => t + 1);
   }
 
   const slide = slides[index];
+  const incoming = incomingIndex !== null ? slides[incomingIndex] : null;
 
   return (
-    <div
-      className="flex flex-col items-center gap-6 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="flex flex-col items-center gap-6 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <div className="relative h-[260px] w-full max-w-[1280px] overflow-hidden sm:h-[340px] md:h-[420px] lg:h-[498px]">
+        <div className="absolute inset-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: reduced
+                ? undefined
+                : `scale(${zoomed ? 1.09 : 1.02})`,
+              transition: reduced ? undefined : "transform 7s linear",
+            }}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.alt}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        </div>
+
+        {incoming && (
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: `translateX(${entering ? "0" : "100%"})`,
+              transition: incomingTransition
+                ? `transform ${SLIDE_MS}ms ${EASE}`
+                : "none",
+            }}
+          >
+            <Image src={incoming.image} alt={incoming.alt} fill className="object-cover" />
+          </div>
+        )}
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 from-38% to-black to-[138%]" />
         <div
-          className="absolute inset-0"
+          className="absolute bottom-0 left-0 flex w-full max-w-[565px] flex-col gap-2 p-4 sm:gap-4 sm:p-6 md:p-10"
           style={{
-            transform: reduced
-              ? undefined
-              : `scale(${zoomed ? 1.09 : 1.02})`,
-            transition: reduced ? undefined : "transform 7s linear",
+            opacity: contentShown ? 1 : 0,
+            transform: contentShown ? "translateY(0)" : "translateY(20px)",
+            transition: `opacity .5s ${EASE}, transform .5s ${EASE}`,
           }}
         >
-          <Image
-            src={slide.image}
-            alt={slide.alt}
-            fill
-            className="object-cover"
-            priority={index === 0}
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/0 from-38% to-black to-[138%]" />
-        <div className="absolute bottom-0 left-0 flex w-full max-w-[565px] flex-col gap-2 p-4 sm:gap-4 sm:p-6 md:p-10">
           <h3 className="font-heading text-h4 text-secondary sm:text-h3">
             {slide.title}
           </h3>
@@ -108,7 +187,7 @@ export default function ShowcaseCarousel() {
               key={s.title}
               type="button"
               aria-label={`Show slide ${i + 1} of ${slides.length}`}
-              onClick={() => goTo(i)}
+              onClick={() => manualGoTo(i)}
               className={
                 i === index
                   ? "h-[5px] w-10 bg-primary transition-colors sm:w-[68px]"
@@ -126,7 +205,7 @@ export default function ShowcaseCarousel() {
           <button
             type="button"
             aria-label="Previous"
-            onClick={() => goTo(index - 1)}
+            onClick={() => manualGoTo(index - 1)}
             className="relative h-14 w-14 shrink-0"
           >
             <Image src="/images/icons/carousel-prev.svg" alt="" fill />
@@ -134,7 +213,7 @@ export default function ShowcaseCarousel() {
           <button
             type="button"
             aria-label="Next"
-            onClick={() => goTo(index + 1)}
+            onClick={() => manualGoTo(index + 1)}
             className="relative h-14 w-14 shrink-0"
           >
             <Image src="/images/icons/carousel-next.svg" alt="" fill />

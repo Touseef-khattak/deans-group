@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const AUTOPLAY_MS = 3000;
-const SLIDE_MS = 900;
-const EASE = "cubic-bezier(.22,1,.36,1)";
+const AUTOPLAY_MS = 6500;
 
 const slides = [
   {
@@ -26,62 +24,23 @@ const slides = [
 export default function Hero() {
   const { lang } = useLanguage();
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [zoomed, setZoomed] = useState(false);
-  // incoming layer slides in over the settled one, then the settled layer
-  // "catches up" to it in one instant, untransitioned reset — no wraparound
-  // math, no visible jump, since the reset only ever happens once both
-  // layers already show the same image
-  const [entering, setEntering] = useState(false);
-  const [incomingTransition, setIncomingTransition] = useState(false);
-  const [contentShown, setContentShown] = useState(true);
 
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
-  // no pause-on-hover here: the hero fills most of the viewport, so a hover
-  // pause (fine for the smaller ShowcaseCarousel) would freeze this on the
-  // first slide the visitor's cursor happens to rest over
   useEffect(() => {
-    if (reduced) return;
+    if (paused || reduced) return;
     const id = setInterval(() => {
-      setContentShown(false);
-      setIncomingTransition(true);
-      // double rAF: let the incoming layer paint at its off-screen start
-      // position with the transition already enabled, then move it —
-      // otherwise the browser can coalesce both changes into one paint
-      // and skip the animation entirely
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setEntering(true));
-      });
+      setIndex((i) => (i + 1) % slides.length);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [reduced]);
+  }, [paused, reduced]);
 
-  // once the incoming image finishes sliding fully into view, settle it:
-  // the bottom layer swaps to the same image and the top layer snaps back
-  // off-screen untransitioned, in the same render — invisible, since both
-  // layers agree on the image at that instant
-  useEffect(() => {
-    if (!entering) return;
-    const settle = setTimeout(() => {
-      setIndex((i) => (i + 1) % slides.length);
-      setIncomingTransition(false);
-      setEntering(false);
-    }, SLIDE_MS);
-    return () => clearTimeout(settle);
-  }, [entering]);
-
-  // content slides up ~150ms after the image settles — sequential, not
-  // simultaneous, per the "image slides in, then content slides up" brief
-  useEffect(() => {
-    if (contentShown) return;
-    const reveal = setTimeout(() => setContentShown(true), SLIDE_MS + 150);
-    return () => clearTimeout(reveal);
-  }, [contentShown]);
-
-  // Ken-Burns drift on the settled slide: 1.02 -> 1.06, resets each change
+  // slow Ken-Burns drift on the active slide: 1.02 -> 1.09 over 7s, resets each slide change
   useEffect(() => {
     setZoomed(false);
     const raf1 = requestAnimationFrame(() => {
@@ -91,62 +50,42 @@ export default function Hero() {
     return () => cancelAnimationFrame(raf1);
   }, [index]);
 
-  const current = slides[index];
-  const incoming = slides[(index + 1) % slides.length];
-
   return (
-    <div className="relative flex h-[520px] items-center gap-11 overflow-hidden bg-primary p-4 sm:h-[600px] sm:px-6 sm:py-10 md:h-[680px] md:p-10 lg:h-[765px] lg:p-20">
-      <div className="absolute inset-0">
+    <div
+      className="relative flex h-[520px] items-center gap-11 overflow-hidden bg-primary p-4 sm:h-[600px] sm:px-6 sm:py-10 md:h-[680px] md:p-10 lg:h-[765px] lg:p-20"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {slides.map((slide, i) => (
         <div
-          className="absolute inset-0"
-          style={{
-            transform: reduced ? undefined : `scale(${zoomed ? 1.06 : 1.02})`,
-            transition: reduced
-              ? undefined
-              : `transform ${AUTOPLAY_MS}ms linear`,
-          }}
+          key={slide.image}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: i === index ? 1 : 0 }}
         >
-          <Image
-            src={current.image}
-            alt={current.alt}
-            fill
-            priority
-            className="object-cover object-bottom"
-            sizes="100vw"
-          />
+          <div
+            className="absolute inset-0"
+            style={{
+              transform:
+                reduced || i !== index
+                  ? undefined
+                  : `scale(${zoomed ? 1.09 : 1.02})`,
+              transition: reduced ? undefined : "transform 7s linear",
+            }}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.alt}
+              fill
+              priority={i === 0}
+              className="object-cover object-bottom"
+              sizes="100vw"
+            />
+          </div>
         </div>
-      </div>
-
-      {!reduced && (
-        <div
-          className="absolute inset-0"
-          style={{
-            transform: `translateX(${entering ? "0" : "100%"})`,
-            transition: incomingTransition
-              ? `transform ${SLIDE_MS}ms ${EASE}`
-              : "none",
-          }}
-        >
-          <Image
-            src={incoming.image}
-            alt={incoming.alt}
-            fill
-            className="object-cover object-bottom"
-            sizes="100vw"
-          />
-        </div>
-      )}
-
+      ))}
       <div className="absolute inset-0 bg-black/70" />
 
-      <div
-        className="relative flex w-full max-w-[847px] flex-col items-start justify-center gap-6 sm:gap-8"
-        style={{
-          opacity: contentShown ? 1 : 0,
-          transform: contentShown ? "translateY(0)" : "translateY(28px)",
-          transition: `opacity .6s ${EASE}, transform .6s ${EASE}`,
-        }}
-      >
+      <div className="relative flex w-full max-w-[847px] flex-col items-start justify-center gap-6 sm:gap-8">
         <p className="w-full text-body-lg text-text-on-dark">
           Deans built for more
         </p>
