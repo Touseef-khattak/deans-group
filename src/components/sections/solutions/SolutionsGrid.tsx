@@ -48,11 +48,14 @@ export default function SolutionsGrid() {
         A building-services layer, designed as one system.
       </h2>
 
-      <Reveal stagger className="flex flex-wrap gap-6">
+      <Reveal
+        stagger
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3"
+      >
         {solutions.map((s) => (
           <div
             key={s.no}
-            className="group flex w-full flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl sm:w-[628px]"
+            className="group flex h-full w-full flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl"
           >
             <p className="font-cascadia text-body-sm text-text-muted transition-colors group-hover:text-text-on-dark">
               {s.no}
