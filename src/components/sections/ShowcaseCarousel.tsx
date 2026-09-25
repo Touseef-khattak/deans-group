@@ -223,17 +223,45 @@ export default function ShowcaseCarousel() {
             type="button"
             aria-label="Previous"
             onClick={() => manualGoTo(index - 1)}
-            className="relative h-14 w-14 shrink-0"
+            className="flex h-14 w-14 shrink-0 items-center justify-center bg-background text-primary-active transition-colors hover:bg-primary hover:text-background"
           >
-            <Image src="/images/icons/carousel-prev.svg" alt="" fill />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31 22L25 28L31 34"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
           <button
             type="button"
             aria-label="Next"
             onClick={() => manualGoTo(index + 1)}
-            className="relative h-14 w-14 shrink-0"
+            className="flex h-14 w-14 shrink-0 items-center justify-center bg-background text-primary-active transition-colors hover:bg-primary hover:text-background"
           >
-            <Image src="/images/icons/carousel-next.svg" alt="" fill />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M25 22L31 28L25 34"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         </div>
       </div>
