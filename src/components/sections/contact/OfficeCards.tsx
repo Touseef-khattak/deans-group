@@ -37,7 +37,7 @@ const offices = [
 
 export default function OfficeCards() {
   return (
-    <div className="flex flex-col items-center gap-6 p-20">
+    <div className="flex flex-col items-center gap-6 p-4 sm:px-6 sm:py-10 md:p-10 lg:p-20">
       <div className="flex w-full flex-col gap-6">
         <h2 className="font-heading text-h1 text-text-primary">
           Our Offices
@@ -47,11 +47,14 @@ export default function OfficeCards() {
         </p>
       </div>
 
-      <Reveal stagger className="flex w-full items-start gap-6">
+      <Reveal
+        stagger
+        className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {offices.map((office) => (
           <div
             key={office.city}
-            className="flex flex-1 flex-col items-start gap-3 border border-border p-6"
+            className="flex flex-col items-start gap-3 border border-border p-6"
           >
             <p className="font-cascadia text-body-sm text-text-muted">
               {office.tag}

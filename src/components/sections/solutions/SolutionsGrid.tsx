@@ -43,7 +43,7 @@ const solutions = [
 
 export default function SolutionsGrid() {
   return (
-    <div className="flex flex-col gap-20 border-t border-border bg-background p-20">
+    <div className="flex flex-col gap-14 border-t border-border bg-background p-4 sm:px-6 sm:py-10 md:p-10 lg:gap-20 lg:p-20">
       <h2 className="w-full max-w-[654px] font-heading text-h1 text-text-primary">
         A building-services layer, designed as one system.
       </h2>
@@ -52,7 +52,7 @@ export default function SolutionsGrid() {
         {solutions.map((s) => (
           <div
             key={s.no}
-            className="group flex w-[628px] flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl"
+            className="group flex w-full flex-col gap-6 border border-border p-6 transition-colors hover:border-primary hover:bg-primary hover:shadow-xl sm:w-[628px]"
           >
             <p className="font-cascadia text-body-sm text-text-muted transition-colors group-hover:text-text-on-dark">
               {s.no}

@@ -113,7 +113,7 @@ export default function PortfolioCarousel() {
 
   return (
     <div
-      className="flex flex-col gap-10 bg-secondary p-20"
+      className="flex flex-col gap-10 bg-secondary p-4 sm:px-6 sm:py-10 md:p-10 lg:p-20"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -121,7 +121,10 @@ export default function PortfolioCarousel() {
         The full portfolio
       </h2>
 
-      <Reveal stagger className="grid grid-cols-4 gap-6">
+      <Reveal
+        stagger
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
         {visible.map((project) => (
           <div
             key={project.name}

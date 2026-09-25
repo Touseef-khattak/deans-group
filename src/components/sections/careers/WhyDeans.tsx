@@ -22,7 +22,7 @@ export default function WhyDeans() {
   return (
     <Reveal
       stagger
-      className="flex items-stretch border border-border bg-background p-20"
+      className="flex flex-col items-stretch border border-border bg-background p-4 sm:flex-row sm:px-6 sm:py-10 md:p-10 lg:p-20"
     >
       {points.map((point) => (
         <div

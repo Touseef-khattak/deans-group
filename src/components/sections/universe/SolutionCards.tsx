@@ -57,7 +57,7 @@ export default function SolutionCards() {
   return (
     <Reveal
       stagger
-      className="grid grid-cols-1 gap-6 border-t border-border bg-background p-20 md:grid-cols-2 xl:grid-cols-3"
+      className="grid grid-cols-1 gap-6 border-t border-border bg-background p-4 sm:px-6 sm:py-10 md:grid-cols-2 md:p-10 lg:p-20 xl:grid-cols-3"
     >
       {cards.map((card) => (
         <div

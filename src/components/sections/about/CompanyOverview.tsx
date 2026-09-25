@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 export default function CompanyOverview() {
   return (
-    <Reveal className="flex items-center gap-20 border-t border-border bg-background p-20">
+    <Reveal className="flex flex-col gap-10 border-t border-border bg-background p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:gap-20 lg:p-20">
       <div className="flex flex-1 flex-col gap-6">
         <h2 className="w-full font-heading text-h1 text-text-primary">
           Anchored in Peshawar. Building nationally.
@@ -26,7 +26,7 @@ export default function CompanyOverview() {
           </p>
         </div>
       </div>
-      <div className="relative h-[400px] w-[600px] shrink-0">
+      <div className="relative h-[260px] w-full shrink-0 sm:h-[320px] lg:h-[400px] lg:w-[600px]">
         <Image
           src="/images/about/overview.png"
           alt="Deans Complex"

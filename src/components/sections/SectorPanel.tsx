@@ -65,8 +65,8 @@ export default function SectorPanel({
   );
 
   const media = (
-    <div className="flex w-[600px] shrink-0 flex-col gap-3">
-      <div className="relative h-[400px] w-full">
+    <div className="flex w-full shrink-0 flex-col gap-3 lg:w-[600px]">
+      <div className="relative h-[260px] w-full sm:h-[320px] lg:h-[400px]">
         <Image src={image} alt={imageAlt} fill className="object-cover" />
       </div>
       {imageCaption && (
@@ -82,8 +82,8 @@ export default function SectorPanel({
       id={id}
       className={
         tone === "warm"
-          ? "flex items-center gap-20 border-t border-border bg-surface-warm p-20"
-          : "flex items-center gap-20 border-t border-border bg-background p-20"
+          ? "flex flex-col gap-10 border-t border-border bg-surface-warm p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:gap-20 lg:p-20"
+          : "flex flex-col gap-10 border-t border-border bg-background p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:gap-20 lg:p-20"
       }
     >
       {reverse ? (

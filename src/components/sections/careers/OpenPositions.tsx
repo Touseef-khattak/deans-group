@@ -38,7 +38,7 @@ const openings = [
 
 export default function OpenPositions() {
   return (
-    <div className="flex flex-col gap-6 bg-secondary p-20">
+    <div className="flex flex-col gap-6 bg-secondary p-4 sm:px-6 sm:py-10 md:p-10 lg:p-20">
       <h2 className="font-heading text-h1 text-text-primary">
         Open Positions At Deans
       </h2>
@@ -53,7 +53,7 @@ export default function OpenPositions() {
         {openings.map((job) => (
           <div
             key={job.no}
-            className="flex w-[628px] flex-col gap-6 border border-border bg-background p-6"
+            className="flex w-full flex-col gap-6 border border-border bg-background p-6 sm:w-[628px]"
           >
             <p className="font-cascadia text-body-sm text-text-muted">
               {job.no}

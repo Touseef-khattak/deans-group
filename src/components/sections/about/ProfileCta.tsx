@@ -13,23 +13,23 @@ const downloads = [
 
 export default function ProfileCta() {
   return (
-    <div className="relative flex flex-col gap-10 overflow-hidden bg-primary p-20">
+    <div className="relative flex flex-col gap-10 overflow-hidden bg-primary p-4 sm:px-6 sm:py-10 md:p-10 lg:p-20">
       <Image
         src="/images/about/cta-texture.png"
         alt=""
         fill
         className="object-cover opacity-10 mix-blend-multiply"
       />
-      <Reveal className="relative flex items-center gap-6">
-        <p className="flex-1 font-heading text-[40px] leading-[50px] text-secondary">
+      <Reveal className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center">
+        <p className="flex-1 font-heading text-[26px] leading-[1.3] text-secondary sm:text-[32px] lg:text-[40px] lg:leading-[50px]">
           Want the full company profile, properly presented?
         </p>
-        <div className="flex w-[600px] items-center justify-end gap-4">
+        <div className="flex w-full flex-wrap items-center gap-4 lg:w-[600px] lg:flex-nowrap lg:justify-end">
           {downloads.map((d) => (
             <Link
               key={d.label}
               href={d.href}
-              className="flex w-[272px] flex-col items-start justify-center gap-3 bg-primary-hover p-4 text-left"
+              className="flex w-full flex-col items-start justify-center gap-3 bg-primary-hover p-4 text-left sm:w-[272px]"
             >
               <p className="font-cascadia text-caption text-secondary">
                 {d.label}

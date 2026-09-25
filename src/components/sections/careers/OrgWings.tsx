@@ -41,12 +41,12 @@ const wings = [
 
 export default function OrgWings() {
   return (
-    <div className="flex flex-col gap-20 border-t border-border bg-background p-20">
+    <div className="flex flex-col gap-14 border-t border-border bg-background p-4 sm:px-6 sm:py-10 md:p-10 lg:gap-20 lg:p-20">
       <h2 className="w-full max-w-[654px] font-heading text-h1 text-text-primary">
         How the group is structured
       </h2>
 
-      <div className="flex h-[811px] w-full items-center gap-10">
+      <div className="flex flex-col gap-10 lg:h-[811px] lg:w-full lg:flex-row lg:items-center">
         <Reveal stagger className="flex flex-1 flex-col">
           {wings.map((wing) => (
             <div
@@ -68,7 +68,7 @@ export default function OrgWings() {
           ))}
         </Reveal>
 
-        <div className="relative flex h-[771px] w-[575px] shrink-0 items-start justify-center overflow-hidden bg-primary-active pt-[120px]">
+        <div className="relative flex h-[360px] w-full shrink-0 items-start justify-center overflow-hidden bg-primary-active pt-[60px] sm:h-[460px] sm:pt-[90px] lg:h-[771px] lg:w-[575px] lg:pt-[120px]">
           <div className="relative h-[132px] w-[233px]">
             <Image
               src="/images/careers/deans-group-mark.png"

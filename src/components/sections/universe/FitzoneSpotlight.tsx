@@ -3,12 +3,15 @@ import Reveal from "@/components/Reveal";
 
 export default function FitzoneSpotlight() {
   return (
-    <Reveal id="fitzone" className="flex flex-col gap-10 bg-secondary p-20">
+    <Reveal
+      id="fitzone"
+      className="flex flex-col gap-10 bg-secondary p-4 sm:px-6 sm:py-10 md:p-10 lg:p-20"
+    >
       <div className="flex flex-col gap-10">
         <h2 className="font-heading text-h1 text-text-primary">
           Fitzone Gym
         </h2>
-        <p className="w-[1200px] text-body-md text-text-secondary">
+        <p className="w-full max-w-[1200px] text-body-md text-text-secondary">
           Fitzone clubs sit inside Deans residential developments — the
           semi-Olympic pool and fitness club at Deans Complex, the indoor
           pool and gymnasium at Deans Heights. As a standalone brand it is
@@ -17,7 +20,7 @@ export default function FitzoneSpotlight() {
           profile is the group directory&rsquo;s route to the brand today.
         </p>
       </div>
-      <div className="relative h-[469px] w-full">
+      <div className="relative h-[220px] w-full sm:h-[320px] lg:h-[469px]">
         <Image
           src="/images/deans-universe/fitzone-gym.png"
           alt="Fitzone Gym interior"
