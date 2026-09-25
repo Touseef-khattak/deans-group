@@ -23,8 +23,11 @@ export default function ApplicationForm() {
   }
 
   return (
-    <Reveal id="apply" className="flex items-center gap-16 p-20">
-      <div className="flex w-[450px] shrink-0 flex-col gap-6">
+    <Reveal
+      id="apply"
+      className="flex flex-col gap-10 p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:gap-16 lg:p-20"
+    >
+      <div className="flex w-full flex-col gap-6 lg:w-[450px] lg:shrink-0">
         <h2 className="font-heading text-h1 text-text-primary">
           Apply for any open position
         </h2>
@@ -37,7 +40,7 @@ export default function ApplicationForm() {
 
       <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-6">
         <div className="flex flex-wrap gap-4">
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/user-circle.svg"
               alt=""
@@ -51,7 +54,7 @@ export default function ApplicationForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/mail.svg"
               alt=""
@@ -65,7 +68,7 @@ export default function ApplicationForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/briefcase.svg"
               alt=""
@@ -94,7 +97,7 @@ export default function ApplicationForm() {
               className="pointer-events-none ml-auto"
             />
           </div>
-          <label className="flex h-14 w-[375px] cursor-pointer items-center justify-between gap-2.5 border border-border px-4">
+          <label className="flex h-14 w-full cursor-pointer items-center justify-between gap-2.5 border border-border px-4 sm:w-[375px]">
             <div className="flex flex-1 items-center gap-2.5 overflow-hidden">
               <Image src="/images/icons/file.svg" alt="" width={16} height={16} />
               <span className="truncate text-body-sm text-text-muted">

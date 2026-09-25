@@ -14,8 +14,11 @@ export default function BookingForm() {
   }
 
   return (
-    <Reveal id="booking" className="flex items-center gap-16 p-20">
-      <div className="flex w-[450px] shrink-0 flex-col gap-6">
+    <Reveal
+      id="booking"
+      className="flex flex-col gap-10 p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:gap-16 lg:p-20"
+    >
+      <div className="flex w-full flex-col gap-6 lg:w-[450px] lg:shrink-0">
         <h2 className="font-heading text-h1 text-text-primary">
           Book a stay
         </h2>
@@ -28,7 +31,7 @@ export default function BookingForm() {
 
       <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-6">
         <div className="flex flex-wrap gap-4">
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/user-circle.svg"
               alt=""
@@ -42,7 +45,7 @@ export default function BookingForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/mail.svg"
               alt=""
@@ -56,7 +59,7 @@ export default function BookingForm() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/calendar.svg"
               alt=""
@@ -84,7 +87,7 @@ export default function BookingForm() {
               className="pointer-events-none ml-auto"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image src="/images/icons/bed.svg" alt="" width={16} height={16} />
             <input
               type="number"
@@ -95,7 +98,7 @@ export default function BookingForm() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6">
           <button
             type="submit"
             disabled={submitted}
@@ -104,7 +107,7 @@ export default function BookingForm() {
             {submitted ? "Sent" : "Check Availability"}
           </button>
           {submitted && (
-            <p role="status" className="w-64 text-body-sm text-primary">
+            <p role="status" className="w-full text-body-sm text-primary sm:w-64">
               Thank you. Your enquiry has reached the team — expect a reply
               within one working day.
             </p>

@@ -45,9 +45,9 @@ export default function Footer() {
   const { lang } = useLanguage();
 
   return (
-    <footer className="bg-primary-active px-20 py-16">
-      <div className="flex justify-between gap-16 pb-8">
-        <div className="flex w-[400px] flex-col gap-4">
+    <footer className="bg-primary-active px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
+      <div className="flex flex-col flex-wrap gap-10 pb-8 md:flex-row md:justify-between lg:gap-16">
+        <div className="flex w-full flex-col gap-4 md:w-[220px] lg:w-[400px]">
           <div className="relative h-[95px] w-[145px]">
             <Image
               src="/images/misc/footer-logo.png"
@@ -110,9 +110,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between border-t border-white/10 pt-6">
+      <div className="flex flex-col items-start gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-body-sm text-text-on-dark/70">Deans Group © 2026</p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-4 sm:gap-6">
           {legalLinks.map((link) => (
             <p key={link} className="text-body-sm text-text-on-dark/70">
               {link}

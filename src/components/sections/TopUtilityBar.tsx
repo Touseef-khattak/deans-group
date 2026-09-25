@@ -16,8 +16,8 @@ export default function TopUtilityBar() {
   const { lang, toggle } = useLanguage();
 
   return (
-    <div className="flex items-center justify-between bg-primary px-20 py-2">
-      <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center justify-between gap-2 bg-primary px-4 py-2 sm:px-6 md:px-10 lg:px-20">
+      <div className="hidden items-center gap-4 sm:flex">
         {cities.map((city, i) => (
           <div key={city} className="flex items-center gap-4">
             <p className="whitespace-nowrap text-caption text-text-on-dark">
@@ -35,7 +35,7 @@ export default function TopUtilityBar() {
         ))}
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 sm:gap-6">
         {links.map(([en, ur, href]) => (
           <Link
             key={en}

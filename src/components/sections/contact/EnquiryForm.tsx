@@ -28,9 +28,9 @@ export default function EnquiryForm() {
   }
 
   return (
-    <Reveal className="flex items-center justify-center gap-10 p-20">
-      <div className="flex flex-col items-start gap-6">
-        <div className="flex w-[554px] flex-col gap-6">
+    <Reveal className="flex flex-col gap-10 p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:justify-center lg:p-20">
+      <div className="flex w-full flex-col items-start gap-6 lg:w-auto">
+        <div className="flex w-full flex-col gap-6 lg:w-[554px]">
           <h2 className="font-heading text-h1 text-text-primary">
             Send us an enquiry &amp; Tell us what you need
           </h2>
@@ -43,10 +43,10 @@ export default function EnquiryForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex w-[766px] flex-col gap-6"
+          className="flex w-full flex-col gap-6 lg:w-[766px]"
         >
           <div className="flex flex-wrap gap-4">
-            <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/user-circle.svg"
                 alt=""
@@ -60,7 +60,7 @@ export default function EnquiryForm() {
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
               />
             </div>
-            <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/phone-outline.svg"
                 alt=""
@@ -73,7 +73,7 @@ export default function EnquiryForm() {
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
               />
             </div>
-            <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/mail.svg"
                 alt=""
@@ -87,7 +87,7 @@ export default function EnquiryForm() {
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
               />
             </div>
-            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/click.svg"
                 alt=""
@@ -117,7 +117,7 @@ export default function EnquiryForm() {
                 className="pointer-events-none ml-auto"
               />
             </div>
-            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/click.svg"
                 alt=""
@@ -148,7 +148,7 @@ export default function EnquiryForm() {
                 className="pointer-events-none ml-auto"
               />
             </div>
-            <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
               <Image
                 src="/images/icons/click.svg"
                 alt=""
@@ -199,7 +199,7 @@ export default function EnquiryForm() {
         </form>
       </div>
 
-      <div className="flex h-[636px] flex-1 flex-col items-end justify-center gap-4 border border-primary bg-primary-active p-10">
+      <div className="flex h-[480px] w-full flex-1 flex-col items-end justify-center gap-4 border border-primary bg-primary-active p-6 sm:h-[560px] sm:p-10 lg:h-[636px] lg:w-auto">
         <p className="w-full font-cascadia text-body-sm text-text-on-dark">
           Fastest route
         </p>

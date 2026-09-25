@@ -22,7 +22,7 @@ const contacts = [
 export default function ContactStrip() {
   return (
     <div className="border-t border-border bg-background">
-      <Reveal className="flex flex-wrap items-center justify-between gap-6 px-20 py-10">
+      <Reveal className="flex flex-wrap items-center justify-between gap-6 px-4 py-8 sm:px-6 md:px-10 lg:px-20 lg:py-10">
         <h2 className="font-heading text-h3 text-primary-hover">
           Speak to a person, not a portal.
         </h2>

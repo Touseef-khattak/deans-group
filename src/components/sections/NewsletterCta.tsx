@@ -14,8 +14,8 @@ export default function NewsletterCta() {
   }
 
   return (
-    <Reveal className="flex items-center justify-between gap-16 bg-background px-20 py-16">
-      <div className="flex w-[450px] shrink-0 flex-col gap-6">
+    <Reveal className="flex flex-col gap-10 bg-background p-4 sm:px-6 sm:py-10 md:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:p-20 lg:py-16">
+      <div className="flex w-full flex-col gap-6 lg:w-[450px] lg:shrink-0">
         <h2 className="font-heading text-h1 text-text-primary">
           Get the progress report before the market does.
         </h2>
@@ -28,7 +28,7 @@ export default function NewsletterCta() {
 
       <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-8">
         <div className="flex flex-wrap gap-4">
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/user-circle.svg"
               alt=""
@@ -42,7 +42,7 @@ export default function NewsletterCta() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/mail.svg"
               alt=""
@@ -56,7 +56,7 @@ export default function NewsletterCta() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/phone-outline.svg"
               alt=""
@@ -69,7 +69,7 @@ export default function NewsletterCta() {
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
-          <div className="relative flex h-14 w-[375px] items-center gap-2.5 border border-border px-4">
+          <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
             <Image
               src="/images/icons/click.svg"
               alt=""
@@ -100,7 +100,7 @@ export default function NewsletterCta() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6">
           <button
             type="submit"
             disabled={submitted}
@@ -109,12 +109,12 @@ export default function NewsletterCta() {
             {submitted ? "Subscribed" : "Subscribe"}
           </button>
           {submitted ? (
-            <p role="status" className="w-64 text-body-sm text-primary">
+            <p role="status" className="w-full text-body-sm text-primary sm:w-64">
               Thank you. Your message has reached the team — expect a reply
               within one working day.
             </p>
           ) : (
-            <p className="w-64 text-body-sm text-text-muted">
+            <p className="w-full text-body-sm text-text-muted sm:w-64">
               You can unsubscribe from either channel at any time.
             </p>
           )}
