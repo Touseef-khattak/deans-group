@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DevelopmentsHero() {
   return (
-    <div className="relative flex h-[400px] items-center justify-center gap-11 overflow-hidden bg-primary p-20">
+    <div className="relative flex h-[360px] items-center justify-center gap-11 overflow-hidden bg-primary p-4 sm:h-[380px] sm:px-6 sm:py-10 md:p-10 lg:h-[400px] lg:p-20">
       <Image
         src="/images/developments-page/hero-bg.png"
         alt="Deans Group project under development"
@@ -12,7 +12,7 @@ export default function DevelopmentsHero() {
       />
       <div className="absolute inset-0 bg-black/80" />
 
-      <div className="relative flex w-[1000px] flex-col items-center justify-center gap-8">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center justify-center gap-6 sm:gap-8">
         <div className="flex w-full flex-col items-center justify-center gap-4">
           <p className="font-cascadia text-body-sm tracking-wide text-surface-warm uppercase">
             Developments / Ventures · Portfolio
@@ -25,7 +25,7 @@ export default function DevelopmentsHero() {
           />
         </div>
 
-        <h1 className="w-full text-center font-heading text-[64px] leading-[1.02] font-medium text-text-on-dark">
+        <h1 className="w-full text-center font-heading text-[34px] leading-[1.1] font-medium text-text-on-dark sm:text-[44px] md:text-[54px] lg:text-[64px] lg:leading-[1.02]">
           Eleven buildings.{" "}
           <span className="font-normal text-primary italic">
             Three cities. Fifty-five years.

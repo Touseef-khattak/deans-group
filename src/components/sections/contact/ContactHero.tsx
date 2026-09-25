@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ContactHero() {
   return (
-    <div className="relative flex h-[400px] items-center justify-center gap-11 overflow-hidden bg-primary p-20">
+    <div className="relative flex h-[360px] items-center justify-center gap-11 overflow-hidden bg-primary p-4 sm:h-[380px] sm:px-6 sm:py-10 md:p-10 lg:h-[400px] lg:p-20">
       <Image
         src="/images/contact/hero-bg.png"
         alt="A Deans Group development"
@@ -12,7 +12,7 @@ export default function ContactHero() {
       />
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative flex w-[1000px] flex-col items-center justify-center gap-8">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center justify-center gap-6 sm:gap-8">
         <div className="flex w-full flex-col items-center justify-center gap-4">
           <p className="font-cascadia text-body-sm tracking-wide text-surface-warm uppercase">
             Contact Us
@@ -25,7 +25,7 @@ export default function ContactHero() {
           />
         </div>
 
-        <h1 className="w-full text-center font-heading text-[64px] leading-[1.02] font-medium text-text-on-dark">
+        <h1 className="w-full text-center font-heading text-[34px] leading-[1.1] font-medium text-text-on-dark sm:text-[44px] md:text-[54px] lg:text-[64px] lg:leading-[1.02]">
           Named people. Direct lines.{" "}
           <span className="font-normal text-primary italic">
             Answers the same day.
