@@ -39,6 +39,7 @@ export default function ShowcaseCarousel() {
   const [contentShown, setContentShown] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [zoomTransition, setZoomTransition] = useState(false);
   const [tick, setTick] = useState(0);
 
   const indexRef = useRef(0);
@@ -86,7 +87,11 @@ export default function ShowcaseCarousel() {
   }, [reduced, tick]);
 
   // once the incoming image finishes sliding fully into view, settle it —
-  // swap the settled slide and snap the incoming layer away untransitioned
+  // swap the settled slide, snap the incoming layer away untransitioned, and
+  // reset the zoom in the SAME batch/render as the image swap (not a tick
+  // later in a separate effect) so the new image's first paint is a clean
+  // unzoomed baseline instead of inheriting the outgoing slide's end-of-zoom
+  // scale
   useEffect(() => {
     if (!entering) return;
     const settle = setTimeout(() => {
@@ -95,6 +100,8 @@ export default function ShowcaseCarousel() {
       setEntering(false);
       setIncomingIndex(null);
       busyRef.current = false;
+      setZoomed(false);
+      setZoomTransition(false);
     }, SLIDE_MS);
     return () => clearTimeout(settle);
   }, [entering, incomingIndex]);
@@ -107,10 +114,17 @@ export default function ShowcaseCarousel() {
     return () => clearTimeout(reveal);
   }, [contentShown]);
 
-  // Ken-Burns drift on the settled slide: 1.02 -> 1.09 over 7s
+  // Ken-Burns drift on the settled slide: 1.02 -> 1.06, freshly every cycle.
+  // The transition is explicitly toggled off then on (rather than left
+  // always-on) so re-enabling it and moving the target happen as two
+  // distinct steps — leaving it always-on caused the reset-to-1.02 step
+  // itself to animate and immediately get "retargeted" back toward 1.06,
+  // which CSS resolves by keeping the full nominal duration for the
+  // remaining (now tiny) distance — net effect: the image looked stuck
+  // near its fully-zoomed, more-cropped scale for the whole cycle.
   useEffect(() => {
-    setZoomed(false);
     const raf1 = requestAnimationFrame(() => {
+      setZoomTransition(true);
       const raf2 = requestAnimationFrame(() => setZoomed(true));
       return () => cancelAnimationFrame(raf2);
     });
@@ -135,9 +149,10 @@ export default function ShowcaseCarousel() {
               transform: reduced
                 ? undefined
                 : `scale(${zoomed ? 1.06 : 1.02})`,
-              transition: reduced
-                ? undefined
-                : `transform ${AUTOPLAY_MS}ms linear`,
+              transition:
+                reduced || !zoomTransition
+                  ? "none"
+                  : `transform ${AUTOPLAY_MS}ms linear`,
             }}
           >
             <Image

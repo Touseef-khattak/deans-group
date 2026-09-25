@@ -27,6 +27,7 @@ export default function Hero() {
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [zoomTransition, setZoomTransition] = useState(false);
 
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -35,15 +36,24 @@ export default function Hero() {
   useEffect(() => {
     if (paused || reduced) return;
     const id = setInterval(() => {
+      // reset the zoom in the same batch as the slide change, not a tick
+      // later, so the incoming slide's first paint is a clean unzoomed
+      // baseline instead of inheriting the outgoing slide's end-of-zoom
+      // scale (see ShowcaseCarousel for the full writeup of this bug)
+      setZoomed(false);
+      setZoomTransition(false);
       setIndex((i) => (i + 1) % slides.length);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
   }, [paused, reduced]);
 
-  // slow Ken-Burns drift on the active slide: 1.02 -> 1.09 over 7s, resets each slide change
+  // slow Ken-Burns drift on the active slide: 1.02 -> 1.09 over 7s, freshly
+  // every cycle — transition is explicitly toggled off then on rather than
+  // left always-on, so re-enabling it and moving the target are two
+  // distinct steps
   useEffect(() => {
-    setZoomed(false);
     const raf1 = requestAnimationFrame(() => {
+      setZoomTransition(true);
       const raf2 = requestAnimationFrame(() => setZoomed(true));
       return () => cancelAnimationFrame(raf2);
     });
@@ -69,7 +79,8 @@ export default function Hero() {
                 reduced || i !== index
                   ? undefined
                   : `scale(${zoomed ? 1.09 : 1.02})`,
-              transition: reduced ? undefined : "transform 7s linear",
+              transition:
+                reduced || !zoomTransition ? undefined : "transform 7s linear",
             }}
           >
             <Image
