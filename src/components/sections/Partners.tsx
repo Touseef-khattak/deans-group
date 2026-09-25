@@ -12,18 +12,21 @@ const partners = [
 
 export default function Partners() {
   return (
-    <div className="flex flex-col items-center gap-10 bg-background px-20 py-16">
+    <div className="flex flex-col items-center gap-10 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
         <h2 className="font-heading text-h1 text-text-primary">
           Built with, &amp; for
         </h2>
       </Reveal>
 
-      <Reveal stagger className="grid grid-cols-6 gap-0">
+      <Reveal
+        stagger
+        className="grid w-full grid-cols-2 gap-0 sm:grid-cols-3 lg:grid-cols-6"
+      >
         {partners.map((partner) => (
           <div
             key={partner.name}
-            className="relative h-[175px] w-[193px]"
+            className="relative h-[130px] w-full sm:h-[150px] lg:h-[175px]"
           >
             <Image
               src={`/images/partners/${partner.file}.png`}

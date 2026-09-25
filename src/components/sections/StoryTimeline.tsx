@@ -60,7 +60,7 @@ export default function StoryTimeline({
   showButton?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-10 bg-surface-warm px-20 py-16">
+    <div className="flex flex-col gap-10 bg-surface-warm px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
         <T
           as="h2"
@@ -70,8 +70,8 @@ export default function StoryTimeline({
         />
       </Reveal>
 
-      <Reveal className="flex items-start gap-16">
-        <div className="flex w-[630px] shrink-0 flex-col gap-6">
+      <Reveal className="flex flex-col items-start gap-10 lg:flex-row lg:gap-16">
+        <div className="flex w-full flex-col gap-6 lg:w-[630px] lg:shrink-0">
           <p className="text-body-lg text-text-secondary">
             In 1971 Mr. Jamal ud Din Khan built Nasir Mansion on Railway
             Road, Peshawar Cantt, and named it after his son. Fifty-five

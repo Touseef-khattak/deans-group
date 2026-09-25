@@ -25,14 +25,14 @@ const projects = [
 
 export default function LatestDevelopments() {
   return (
-    <div className="flex flex-col gap-10 bg-background px-20 py-16">
+    <div className="flex flex-col gap-10 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
         <h2 className="font-heading text-h1 text-text-primary">
           Latest developments
         </h2>
       </Reveal>
 
-      <Reveal stagger className="grid grid-cols-3 gap-6">
+      <Reveal stagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div
             key={project.name}

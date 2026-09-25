@@ -68,11 +68,11 @@ export default function ShowcaseCarousel() {
 
   return (
     <div
-      className="flex flex-col items-center gap-6 bg-background px-20 py-16"
+      className="flex flex-col items-center gap-6 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative h-[498px] w-full max-w-[1280px] overflow-hidden">
+      <div className="relative h-[260px] w-full max-w-[1280px] overflow-hidden sm:h-[340px] md:h-[420px] lg:h-[498px]">
         <div
           className="absolute inset-0"
           style={{
@@ -91,15 +91,17 @@ export default function ShowcaseCarousel() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/0 from-38% to-black to-[138%]" />
-        <div className="absolute bottom-0 left-0 flex w-[565px] flex-col gap-4 p-10">
-          <h3 className="font-heading text-h3 text-secondary">
+        <div className="absolute bottom-0 left-0 flex w-full max-w-[565px] flex-col gap-2 p-4 sm:gap-4 sm:p-6 md:p-10">
+          <h3 className="font-heading text-h4 text-secondary sm:text-h3">
             {slide.title}
           </h3>
-          <p className="text-body-md text-background">{slide.description}</p>
+          <p className="text-body-sm text-background sm:text-body-md">
+            {slide.description}
+          </p>
         </div>
       </div>
 
-      <div className="flex w-full max-w-[1280px] items-center justify-between">
+      <div className="flex w-full max-w-[1280px] flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           {slides.map((s, i) => (
             <button
@@ -109,8 +111,8 @@ export default function ShowcaseCarousel() {
               onClick={() => goTo(i)}
               className={
                 i === index
-                  ? "h-[5px] w-[68px] bg-primary transition-colors"
-                  : "h-[5px] w-[68px] bg-border transition-colors"
+                  ? "h-[5px] w-10 bg-primary transition-colors sm:w-[68px]"
+                  : "h-[5px] w-10 bg-border transition-colors sm:w-[68px]"
               }
             />
           ))}

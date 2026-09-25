@@ -240,7 +240,7 @@ export default function BuildingExplorer() {
   }
 
   return (
-    <div className="flex flex-col gap-10 bg-background px-20 py-16">
+    <div className="flex flex-col gap-10 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal className="flex flex-col gap-4">
         <T
           as="h2"
@@ -256,7 +256,7 @@ export default function BuildingExplorer() {
       </Reveal>
 
       <Reveal className="flex flex-col border border-border">
-        <div className="flex">
+        <div className="flex flex-wrap">
           {PROJECTS.map((p, i) => (
             <button
               key={p.name}
@@ -264,8 +264,8 @@ export default function BuildingExplorer() {
               onClick={() => selectProject(i)}
               className={
                 i === active
-                  ? "flex flex-1 flex-col gap-1 bg-primary-hover px-6 py-4 text-left"
-                  : "flex flex-1 flex-col gap-1 border-r border-b border-border px-6 py-4 text-left transition-colors hover:bg-surface-warm"
+                  ? "flex min-w-[110px] flex-1 flex-col gap-1 bg-primary-hover px-3 py-3 text-left sm:px-6 sm:py-4"
+                  : "flex min-w-[110px] flex-1 flex-col gap-1 border-r border-b border-border px-3 py-3 text-left transition-colors hover:bg-surface-warm sm:px-6 sm:py-4"
               }
             >
               <p
@@ -290,14 +290,14 @@ export default function BuildingExplorer() {
           ))}
         </div>
 
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
           <div
             ref={stageRef}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
             onPointerCancel={endDrag}
-            className="bld-stage relative h-[634px] flex-1 touch-none overflow-hidden"
+            className="bld-stage relative h-[360px] flex-1 touch-none overflow-hidden sm:h-[460px] lg:h-[634px]"
             style={{ cursor: dragging.current ? "grabbing" : "grab" }}
           >
             <div
@@ -362,7 +362,7 @@ export default function BuildingExplorer() {
             </div>
           </div>
 
-          <aside className="flex w-[420px] shrink-0 flex-col gap-6 border-l border-border bg-surface-warm/40 p-10">
+          <aside className="flex w-full shrink-0 flex-col gap-6 border-t border-border bg-surface-warm/40 p-6 sm:p-10 lg:w-[420px] lg:border-t-0 lg:border-l">
             <p className="font-cascadia text-caption text-text-secondary">
               {project.no}
             </p>
@@ -426,7 +426,7 @@ export default function BuildingExplorer() {
         </div>
       </Reveal>
 
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <button
           type="button"
           className="flex h-12 items-center justify-center bg-surface-warm px-6 text-body-sm text-text-primary"

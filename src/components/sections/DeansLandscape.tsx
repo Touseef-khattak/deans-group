@@ -56,7 +56,7 @@ export default function DeansLandscape() {
   }
 
   return (
-    <div ref={sectionRef} className="flex flex-col gap-10 bg-background px-20 py-16">
+    <div ref={sectionRef} className="flex flex-col gap-10 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
         <T
           as="h2"
@@ -66,8 +66,8 @@ export default function DeansLandscape() {
         />
       </Reveal>
 
-      <Reveal className="flex h-[534px] border border-border">
-        <div className="relative h-full w-[839px] shrink-0 bg-surface-warm">
+      <Reveal className="flex flex-col border border-border lg:h-[534px] lg:flex-row">
+        <div className="relative h-[300px] w-full shrink-0 bg-surface-warm sm:h-[380px] lg:h-full lg:w-[839px]">
           {!started && (
             <Image
               src="/images/map/pakistan-map.png"
@@ -86,7 +86,7 @@ export default function DeansLandscape() {
           {started && failed && <FallbackMap highlightCity={expandedCity} />}
         </div>
 
-        <div className="flex flex-1 flex-col gap-6 p-10">
+        <div className="flex flex-1 flex-col gap-6 p-4 sm:p-6 lg:p-10">
           <div className="flex items-center justify-between">
             <h3 className="font-heading text-h3 text-text-primary">
               Where Deans builds

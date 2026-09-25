@@ -10,11 +10,11 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <Reveal className="flex h-[240px] items-center justify-center border border-border bg-background px-20">
+    <Reveal className="grid grid-cols-2 border border-border bg-background px-4 sm:px-6 md:px-10 lg:h-[240px] lg:grid-cols-4 lg:px-20">
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="flex h-full flex-1 flex-col items-center justify-center gap-4 border border-border px-4"
+          className="flex flex-col items-center justify-center gap-4 border border-border px-4 py-8 lg:h-full"
         >
           <p className="text-body-md text-text-primary">{stat.label}</p>
           <div className="text-center">

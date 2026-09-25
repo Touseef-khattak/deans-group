@@ -38,14 +38,17 @@ export default function CoreValues({
   heading?: string;
 }) {
   return (
-    <div className="flex flex-col gap-10 bg-background px-20 py-16">
+    <div className="flex flex-col gap-10 bg-background px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
       <Reveal>
         <h2 className="font-heading text-h1 text-text-primary">
           {heading}
         </h2>
       </Reveal>
 
-      <Reveal stagger className="grid grid-cols-4 gap-0 border border-border">
+      <Reveal
+        stagger
+        className="grid grid-cols-1 gap-0 border border-border sm:grid-cols-2 lg:grid-cols-4"
+      >
         {values.map((value) => (
           <div
             key={value.title}

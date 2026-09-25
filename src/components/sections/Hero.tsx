@@ -7,7 +7,7 @@ export default function Hero() {
   const { lang } = useLanguage();
 
   return (
-    <div className="relative flex h-[765px] items-center gap-11 overflow-hidden bg-primary p-20">
+    <div className="relative flex h-[520px] items-center gap-11 overflow-hidden bg-primary p-4 sm:h-[600px] sm:px-6 sm:py-10 md:h-[680px] md:p-10 lg:h-[765px] lg:p-20">
       <Image
         src="/images/hero/hero-bg.png"
         alt="Aerial view of a Deans development"
@@ -18,12 +18,12 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative flex w-[847px] flex-col items-start justify-center gap-8">
+      <div className="relative flex w-full max-w-[847px] flex-col items-start justify-center gap-6 sm:gap-8">
         <p className="w-full text-body-lg text-text-on-dark">
           Deans built for more
         </p>
 
-        <h1 className="w-full font-heading text-[82px] leading-none font-medium text-text-on-dark">
+        <h1 className="w-full font-heading text-[40px] leading-[1.05] font-medium text-text-on-dark sm:text-[54px] md:text-[66px] lg:text-[82px] lg:leading-none">
           {lang === "ur" ? (
             "۱۹۷۱ سے تعمیر، اعتماد کے ساتھ"
           ) : (
