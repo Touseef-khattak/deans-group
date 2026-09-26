@@ -51,7 +51,7 @@ export function T({
 }: {
   en: string;
   ur: string;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: "span" | "p" | "h1" | "h2" | "h3" | "h4";
   className?: string;
 }) {
   const { lang } = useLanguage();
