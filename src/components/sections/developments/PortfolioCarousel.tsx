@@ -45,14 +45,14 @@ const projects = [
   },
   {
     slug: "apartments-one",
-    image: "/images/skyline/apartments-one.jpg",
+    image: "/images/developments/2d/apartments-one.jpg",
     location: "Sector G-11/3, Islamabad - In hand",
     name: "Deans Apartments One",
     description: "97 apartments + 2 penthouses across 215,505 sq ft.",
   },
   {
     slug: "medicine-center",
-    image: "/images/skyline/medicine-centre.jpg",
+    image: "/images/developments/2d/medicine-center.jpg",
     location: "Phase 4, Hayatabad, Peshawar - In hand",
     name: "Deans Medicine Center",
     description:
@@ -60,21 +60,21 @@ const projects = [
   },
   {
     slug: "apartments",
-    image: "/images/skyline/apartments-one-alt.jpg",
+    image: "/images/developments/2d/apartments.png",
     location: "Old Bara Road, University Town, Peshawar - In hand",
     name: "Deans Apartments",
     description: "Residential apartments on Old Bara Road, University Town.",
   },
   {
     slug: "arcade",
-    image: "/images/skyline/arcade.jpg",
+    image: "/images/developments/2d/arcade.jpg",
     location: "Sector I-16, Islamabad - In hand · 2026",
     name: "Deans Arcade",
     description: "Retail and residential development in Sector I-16.",
   },
   {
     slug: "nasir-mansion",
-    image: "/images/skyline/nasir-mansion.jpg",
+    image: "/images/developments/2d/nasir-mansion.jpg",
     location: "Railway Road No. 2, Peshawar Cantt - Completed 1971",
     name: "Nasir Mansion",
     description:
