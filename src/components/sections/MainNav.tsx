@@ -157,15 +157,23 @@ export default function MainNav() {
 
         <a
           href="/contact"
-          className="group flex h-10 w-[140px] shrink-0 items-center justify-center gap-1.5 border border-primary bg-primary px-4 transition-colors duration-300 hover:bg-background"
+          className="group flex h-10 w-[140px] shrink-0 items-center justify-center gap-1.5 border border-primary bg-primary px-4 text-surface-warm transition-colors duration-300 hover:bg-background hover:text-primary"
         >
-          <Image
-            src="/images/icons/phone.svg"
-            alt=""
-            width={20}
-            height={20}
-          />
-          <p className="whitespace-nowrap text-body-sm text-surface-warm transition-colors duration-300 group-hover:text-primary">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.17647 5H8.52941L9.70588 7.94118L8.23529 8.82353C8.86527 10.1009 9.8991 11.1347 11.1765 11.7647L12.0588 10.2941L15 11.4706V13.8235C15 14.1355 14.8761 14.4348 14.6554 14.6554C14.4348 14.8761 14.1355 15 13.8235 15C11.529 14.8606 9.3648 13.8862 7.73931 12.2607C6.11383 10.6352 5.13944 8.47102 5 6.17647C5 5.86445 5.12395 5.56521 5.34458 5.34458C5.56521 5.12395 5.86445 5 6.17647 5Z"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p className="whitespace-nowrap text-body-sm">
             {lang === "ur" ? "رابطہ" : "Contact"}
           </p>
         </a>
@@ -173,10 +181,23 @@ export default function MainNav() {
 
       <a
         href="/contact"
-        className="flex h-10 w-10 shrink-0 items-center justify-center border border-primary bg-primary transition-colors duration-300 hover:bg-background lg:hidden"
+        className="flex h-10 w-10 shrink-0 items-center justify-center border border-primary bg-primary text-surface-warm transition-colors duration-300 hover:bg-background hover:text-primary lg:hidden"
         aria-label="Contact"
       >
-        <Image src="/images/icons/phone.svg" alt="" width={18} height={18} />
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.17647 5H8.52941L9.70588 7.94118L8.23529 8.82353C8.86527 10.1009 9.8991 11.1347 11.1765 11.7647L12.0588 10.2941L15 11.4706V13.8235C15 14.1355 14.8761 14.4348 14.6554 14.6554C14.4348 14.8761 14.1355 15 13.8235 15C11.529 14.8606 9.3648 13.8862 7.73931 12.2607C6.11383 10.6352 5.13944 8.47102 5 6.17647C5 5.86445 5.12395 5.56521 5.34458 5.34458C5.56521 5.12395 5.86445 5 6.17647 5Z"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </a>
 
       {menuOpen && (
