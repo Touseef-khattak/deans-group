@@ -116,13 +116,24 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/apartments-one.jpg",
     gallery: gallery(
       "apartments-one",
-      ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg"],
+      [
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg",
+        "05.jpg",
+        "06.jpg",
+        "07.jpg",
+        "08.jpg",
+        "09.jpg",
+        "10.jpg",
+      ],
       "Deans Apartments One",
     ),
     story: {
       paragraph:
         "The group's first Islamabad residential address in Sector G-11/3 — 97 apartments and 2 penthouses, built to the same standard as the Peshawar portfolio.",
-      image: "/images/developments/gallery/apartments-one/01.jpg",
+      image: "/images/developments/gallery/apartments-one/07.jpg",
       imageAlt: "Deans Apartments One",
     },
   },
@@ -203,7 +214,15 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/arcade.jpg",
     gallery: gallery(
       "arcade",
-      ["01.jpg", "02.jpg", "03.jpg"],
+      [
+        "01.jpg",
+        "02.jpg",
+        "03.jpg",
+        "04.jpg",
+        "05.jpg",
+        "06.jpg",
+        "07.jpg",
+      ],
       "Deans Arcade",
     ),
     story: {
