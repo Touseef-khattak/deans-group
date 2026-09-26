@@ -23,11 +23,11 @@ const slides = [
       "Five blocks on 33 kanals in Hayatabad. 350 apartments, 13 lifts, 935,000 sq ft of elevated living.",
   },
   {
-    image: "/images/developments/deans-commercial-center.jpg",
-    alt: "Deans Commercial Center",
-    title: "Deans Commercial Center",
+    image: "/images/developments/2d/apartments-one.jpg",
+    alt: "Deans Apartments One",
+    title: "Deans Apartments One",
     description:
-      "110 offices across 8 floors, 49 ground/lower-ground shops on Ashraf Road, Peshawar.",
+      "97 apartments and 2 penthouses across 215,505 sq ft in Sector G-11/3 — the group's first Islamabad residential address.",
   },
 ];
 
