@@ -60,7 +60,7 @@ export default function ProjectGalleryHero({
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
-        <div className="absolute right-4 bottom-4 flex items-center gap-2 bg-background px-4 py-2 sm:right-6 sm:bottom-6">
+        <div className="absolute right-4 bottom-4 flex items-center gap-2 border border-background bg-background px-4 py-2 text-text-primary transition-colors duration-300 group-hover:border-primary group-hover:text-primary sm:right-6 sm:bottom-6">
           <svg
             width="20"
             height="20"
@@ -86,7 +86,7 @@ export default function ProjectGalleryHero({
               strokeLinejoin="round"
             />
           </svg>
-          <p className="text-body-sm text-text-primary">
+          <p className="text-body-sm">
             {count} {count === 1 ? "photo" : "photos"} — View gallery
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function ProjectGalleryHero({
                 e.stopPropagation();
                 setOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors hover:border-primary hover:bg-primary"
+              className="flex h-10 w-10 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors duration-300 hover:border-primary hover:text-primary"
             >
               <svg
                 width="18"
@@ -150,7 +150,7 @@ export default function ProjectGalleryHero({
                 type="button"
                 aria-label="Previous photo"
                 onClick={() => setIndex((i) => (i - 1 + count) % count)}
-                className="flex h-12 w-12 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors hover:border-primary hover:bg-primary"
+                className="flex h-12 w-12 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors duration-300 hover:border-primary hover:text-primary"
               >
                 <svg
                   width="20"
@@ -172,7 +172,7 @@ export default function ProjectGalleryHero({
                 type="button"
                 aria-label="Next photo"
                 onClick={() => setIndex((i) => (i + 1) % count)}
-                className="flex h-12 w-12 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors hover:border-primary hover:bg-primary"
+                className="flex h-12 w-12 items-center justify-center border border-text-on-dark/40 text-text-on-dark transition-colors duration-300 hover:border-primary hover:text-primary"
               >
                 <svg
                   width="20"

@@ -109,7 +109,7 @@ export default function StoryTimeline({
           {showButton && (
             <Link
               href="/about"
-              className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark"
+              className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary"
             >
               The Full Story
             </Link>

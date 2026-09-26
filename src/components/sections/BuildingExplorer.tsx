@@ -411,13 +411,13 @@ export default function BuildingExplorer() {
             <div className="flex gap-3">
               <button
                 type="button"
-                className="flex h-12 flex-1 items-center justify-center bg-surface-warm px-4 text-body-sm text-text-primary"
+                className="flex h-12 flex-1 items-center justify-center border border-surface-warm bg-surface-warm px-4 text-body-sm text-text-primary transition-colors duration-300 hover:border-primary hover:text-primary"
               >
                 Download Boucher
               </button>
               <button
                 type="button"
-                className="flex h-12 flex-1 items-center justify-center bg-primary px-4 text-body-sm text-text-on-dark"
+                className="flex h-12 flex-1 items-center justify-center border border-primary bg-primary px-4 text-body-sm text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary"
               >
                 Project Details
               </button>
@@ -429,13 +429,13 @@ export default function BuildingExplorer() {
       <div className="flex flex-wrap gap-3">
         <button
           type="button"
-          className="flex h-12 items-center justify-center bg-surface-warm px-6 text-body-sm text-text-primary"
+          className="flex h-12 items-center justify-center border border-surface-warm bg-surface-warm px-6 text-body-sm text-text-primary transition-colors duration-300 hover:border-primary hover:text-primary"
         >
           Contact Us
         </button>
         <button
           type="button"
-          className="flex h-12 items-center justify-center bg-primary px-6 text-body-sm text-text-on-dark"
+          className="flex h-12 items-center justify-center border border-primary bg-primary px-6 text-body-sm text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary"
         >
           View All Projects
         </button>

@@ -223,7 +223,7 @@ export default function ShowcaseCarousel() {
             type="button"
             aria-label="Previous"
             onClick={() => manualGoTo(index - 1)}
-            className="flex h-14 w-14 shrink-0 items-center justify-center border border-border bg-background text-primary-active transition-colors hover:border-primary hover:bg-primary hover:text-background"
+            className="flex h-14 w-14 shrink-0 items-center justify-center border border-border bg-background text-primary-active transition-colors duration-300 hover:border-primary hover:text-primary"
           >
             <svg
               width="24"
@@ -245,7 +245,7 @@ export default function ShowcaseCarousel() {
             type="button"
             aria-label="Next"
             onClick={() => manualGoTo(index + 1)}
-            className="flex h-14 w-14 shrink-0 items-center justify-center border border-border bg-background text-primary-active transition-colors hover:border-primary hover:bg-primary hover:text-background"
+            className="flex h-14 w-14 shrink-0 items-center justify-center border border-border bg-background text-primary-active transition-colors duration-300 hover:border-primary hover:text-primary"
           >
             <svg
               width="24"

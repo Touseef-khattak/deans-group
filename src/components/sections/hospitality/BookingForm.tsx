@@ -102,7 +102,7 @@ export default function BookingForm() {
           <button
             type="submit"
             disabled={submitted}
-            className="flex h-14 w-[200px] items-center justify-center bg-primary text-button text-text-on-dark disabled:opacity-50"
+            className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
           >
             {submitted ? "Sent" : "Check Availability"}
           </button>

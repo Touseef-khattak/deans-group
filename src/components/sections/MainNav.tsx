@@ -157,7 +157,7 @@ export default function MainNav() {
 
         <a
           href="/contact"
-          className="flex h-10 w-[140px] shrink-0 items-center justify-center gap-1.5 bg-primary px-4"
+          className="group flex h-10 w-[140px] shrink-0 items-center justify-center gap-1.5 border border-primary bg-primary px-4 transition-colors duration-300 hover:bg-background"
         >
           <Image
             src="/images/icons/phone.svg"
@@ -165,7 +165,7 @@ export default function MainNav() {
             width={20}
             height={20}
           />
-          <p className="whitespace-nowrap text-body-sm text-surface-warm">
+          <p className="whitespace-nowrap text-body-sm text-surface-warm transition-colors duration-300 group-hover:text-primary">
             {lang === "ur" ? "رابطہ" : "Contact"}
           </p>
         </a>
@@ -173,7 +173,7 @@ export default function MainNav() {
 
       <a
         href="/contact"
-        className="flex h-10 w-10 shrink-0 items-center justify-center bg-primary lg:hidden"
+        className="flex h-10 w-10 shrink-0 items-center justify-center border border-primary bg-primary transition-colors duration-300 hover:bg-background lg:hidden"
         aria-label="Contact"
       >
         <Image src="/images/icons/phone.svg" alt="" width={18} height={18} />
