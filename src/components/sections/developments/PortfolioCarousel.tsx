@@ -30,14 +30,14 @@ const projects = [
   },
   {
     slug: "commercial-center",
-    image: "/images/developments/deans-commercial-center.png",
+    image: "/images/developments/deans-commercial-center.jpg",
     location: "Ashraf Road, Peshawar - In hand",
     name: "Deans Commercial Center",
     description: "110 offices across 8 floors, 49 ground/lower-ground shops.",
   },
   {
     slug: "trade-centre",
-    image: "/images/showcase/deans-trade-centre.png",
+    image: "/images/showcase/deans-trade-centre.jpg",
     location: "Peshawar Cantt - Completed",
     name: "Deans Trade Centre",
     description:
@@ -45,14 +45,14 @@ const projects = [
   },
   {
     slug: "apartments-one",
-    image: "/images/skyline/apartments-one.png",
+    image: "/images/skyline/apartments-one.jpg",
     location: "Sector G-11/3, Islamabad - In hand",
     name: "Deans Apartments One",
     description: "97 apartments + 2 penthouses across 215,505 sq ft.",
   },
   {
     slug: "medicine-center",
-    image: "/images/skyline/medicine-centre.png",
+    image: "/images/skyline/medicine-centre.jpg",
     location: "Phase 4, Hayatabad, Peshawar - In hand",
     name: "Deans Medicine Center",
     description:
@@ -60,21 +60,21 @@ const projects = [
   },
   {
     slug: "apartments",
-    image: "/images/skyline/apartments-one-alt.png",
+    image: "/images/skyline/apartments-one-alt.jpg",
     location: "Old Bara Road, University Town, Peshawar - In hand",
     name: "Deans Apartments",
     description: "Residential apartments on Old Bara Road, University Town.",
   },
   {
     slug: "arcade",
-    image: "/images/skyline/arcade.png",
+    image: "/images/skyline/arcade.jpg",
     location: "Sector I-16, Islamabad - In hand · 2026",
     name: "Deans Arcade",
     description: "Retail and residential development in Sector I-16.",
   },
   {
     slug: "nasir-mansion",
-    image: "/images/skyline/nasir-mansion.png",
+    image: "/images/skyline/nasir-mansion.jpg",
     location: "Railway Road No. 2, Peshawar Cantt - Completed 1971",
     name: "Nasir Mansion",
     description:

@@ -8,15 +8,15 @@ const AUTOPLAY_MS = 6500;
 
 const slides = [
   {
-    image: "/images/hero/hero-bg-2.png",
+    image: "/images/hero/hero-bg-2.jpg",
     alt: "Aerial view of Deans Trade Centre",
   },
   {
-    image: "/images/hero/hero-bg-3.png",
+    image: "/images/hero/hero-bg-3.jpg",
     alt: "Aerial view of Deans Complex",
   },
   {
-    image: "/images/hero/hero-bg.png",
+    image: "/images/hero/hero-bg.jpg",
     alt: "Aerial view of Deans Heights",
   },
 ];

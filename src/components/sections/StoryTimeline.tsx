@@ -13,7 +13,7 @@ const milestones = [
     description:
       "60,000 sq ft on Railway Road No. 2 — 48 shops, 43 offices, and the group's first name on a façade",
     filled: false,
-    image: "/images/story/railway-road.png",
+    image: "/images/story/railway-road.jpg",
   },
   {
     year: "1982",
@@ -21,7 +21,7 @@ const milestones = [
     description:
       "Kohat Road. 42 apartments across a multi-tower residential complex — the move into housing.",
     filled: true,
-    image: "/images/story/shahab-flats.png",
+    image: "/images/story/shahab-flats.jpg",
   },
   {
     year: "1998",
@@ -29,7 +29,7 @@ const milestones = [
     description:
       "Mr. Nasir Jamal brings together family capital and an investor network to win the historic 57-kanal site at public auction.",
     filled: false,
-    image: "/images/showcase/deans-trade-centre.png",
+    image: "/images/showcase/deans-trade-centre.jpg",
   },
   {
     year: "2004",

@@ -19,7 +19,7 @@ const projects = [
   },
   {
     slug: "commercial-center",
-    image: "/images/developments/deans-commercial-center.png",
+    image: "/images/developments/deans-commercial-center.jpg",
     location: "Ashraf Road, Peshawar - In hand",
     name: "Deans Commercial Center",
     description: "110 offices across 8 floors, 49 ground/lower-ground shops.",

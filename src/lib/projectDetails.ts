@@ -37,8 +37,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     gallery: gallery(
       "heights",
       [
-        "01.png",
-        "02.png",
+        "01.jpg",
+        "02.jpg",
         "03.jpg",
         "04.jpg",
         "05.jpg",
@@ -88,7 +88,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/complex.jpg",
     gallery: gallery(
       "complex",
-      ["01.png", "02.jpg", "03.png", "04.jpg", "05.jpg", "06.jpg", "07.jpg"],
+      ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg"],
       "Deans Complex",
     ),
     story: {
@@ -114,7 +114,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/apartments.png",
     gallery: gallery(
       "apartments",
-      ["01.jpg", "02.jpg", "03.png", "04.png", "05.png"],
+      ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"],
       "Deans Apartments",
     ),
     story: {
@@ -285,17 +285,17 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     gallery: gallery(
       "trade-centre",
       [
-        "01.png",
-        "02.png",
+        "01.jpg",
+        "02.jpg",
         "03.jpg",
         "04.jpg",
         "05.png",
         "06.jpg",
-        "07.png",
-        "08.png",
+        "07.jpg",
+        "08.jpg",
         "09.jpg",
-        "10.png",
-        "11.png",
+        "10.jpg",
+        "11.jpg",
         "12.jpg",
         "13.jpg",
         "14.jpg",
@@ -305,7 +305,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     story: {
       paragraph:
         "3,200 shops and offices arranged around galleried atriums and escalator courts — won at public auction in 1998 and still Peshawar's commercial centre of gravity today.",
-      image: "/images/developments/gallery/trade-centre/07.png",
+      image: "/images/developments/gallery/trade-centre/07.jpg",
       imageAlt: "Deans Trade Centre interior atrium",
     },
   },
@@ -352,7 +352,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/nasir-mansion.jpg",
     gallery: gallery(
       "nasir-mansion",
-      ["01.jpg", "02.png", "03.png", "04.jpg", "05.jpg", "06.jpg"],
+      ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg"],
       "Nasir Mansion",
     ),
     story: {
@@ -376,11 +376,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       { label: "Units", value: "42 apartments" },
     ],
     heroImage: "/images/developments/2d/shahab-flats.png",
-    gallery: gallery("shahab-flats", ["01.png"], "Shahab Flats"),
+    gallery: gallery("shahab-flats", ["01.jpg"], "Shahab Flats"),
     story: {
       paragraph:
         "42 apartments across a multi-tower residential complex on Kohat Road, raised a decade after Nasir Mansion — the group's first move from commercial into housing.",
-      image: "/images/developments/gallery/shahab-flats/01.png",
+      image: "/images/developments/gallery/shahab-flats/01.jpg",
       imageAlt: "Shahab Flats",
     },
   },

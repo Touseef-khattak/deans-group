@@ -9,7 +9,7 @@ const EASE = "cubic-bezier(.22,1,.36,1)";
 
 const slides = [
   {
-    image: "/images/showcase/deans-trade-centre.png",
+    image: "/images/showcase/deans-trade-centre.jpg",
     alt: "Deans Trade Centre",
     title: "Deans Trade Centre",
     description:
@@ -23,7 +23,7 @@ const slides = [
       "Five blocks on 33 kanals in Hayatabad. 350 apartments, 13 lifts, 935,000 sq ft of elevated living.",
   },
   {
-    image: "/images/developments/deans-commercial-center.png",
+    image: "/images/developments/deans-commercial-center.jpg",
     alt: "Deans Commercial Center",
     title: "Deans Commercial Center",
     description:
