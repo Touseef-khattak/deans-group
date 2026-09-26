@@ -16,7 +16,7 @@ const slides = [
       "57 kanals. 1.8 million square feet. 3,200 shops and offices under one roof — Peshawar's commercial centre of gravity since the auction of 1998.",
   },
   {
-    image: "/images/developments/deans-heights.png",
+    image: "/images/developments/2d/heights.png",
     alt: "Deans Heights",
     title: "Deans Heights",
     description:

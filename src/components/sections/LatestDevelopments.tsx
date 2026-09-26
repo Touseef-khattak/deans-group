@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 const projects = [
   {
     slug: "heights",
-    image: "/images/developments/deans-heights.png",
+    image: "/images/developments/2d/heights.png",
     location: "Hayatabad, Peshawar - In hand",
     name: "Deans Heights",
     description: "5 blocks · 350 apartments · 935,000 sq ft.",

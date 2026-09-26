@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 const projects = [
   {
     slug: "heights",
-    image: "/images/developments/deans-heights.png",
+    image: "/images/developments/2d/heights.png",
     location: "Hayatabad, Peshawar - In hand",
     name: "Deans Heights",
     description: "5 blocks · 350 apartments · 935,000 sq ft.",
@@ -82,9 +82,7 @@ const projects = [
   },
   {
     slug: "shahab-flats",
-    // no dedicated photo exists for Shahab Flats in the source design —
-    // reusing the Deans Heights photo as the closest same-era residential stand-in
-    image: "/images/developments/deans-heights.png",
+    image: "/images/developments/2d/shahab-flats.png",
     location: "Kohat Road, Peshawar - Completed 1982",
     name: "Shahab Flats",
     description: "42 apartments across a multi-tower residential complex.",
