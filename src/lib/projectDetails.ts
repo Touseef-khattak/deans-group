@@ -8,6 +8,7 @@ export type ProjectDetail = {
   stats: { label: string; value: string }[];
   heroImage: string;
   gallery: { src: string; alt: string }[];
+  story: { paragraph: string; image: string; imageAlt: string };
 };
 
 function gallery(slug: string, files: string[], name: string) {
@@ -38,6 +39,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.png", "02.png", "03.jpg", "04.jpg", "05.jpg", "06.jpg"],
       "Deans Heights",
     ),
+    story: {
+      paragraph:
+        "Five blocks arranged around shared gardens in Hayatabad, with 13 lifts serving 350 apartments — and Fitzone's indoor pool and gymnasium built into the complex, rather than added after the fact.",
+      image: "/images/developments/gallery/heights/04.jpg",
+      imageAlt: "Deans Heights",
+    },
   },
   {
     slug: "complex",
@@ -56,9 +63,15 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/complex.jpg",
     gallery: gallery(
       "complex",
-      ["01.png", "02.jpg", "03.png", "04.jpg", "05.jpg", "06.jpg"],
+      ["01.png", "02.jpg", "03.png", "04.jpg", "05.jpg", "06.jpg", "07.jpg"],
       "Deans Complex",
     ),
+    story: {
+      paragraph:
+        "Three residential blocks on University Road wrap around a landscaped rooftop terrace — the same deck that houses Fitzone's semi-Olympic pool and fitness club, open to residents above the street rather than tucked in a basement.",
+      image: "/images/developments/gallery/complex/07.jpg",
+      imageAlt: "Deans Complex rooftop terrace",
+    },
   },
   {
     slug: "apartments",
@@ -79,6 +92,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.jpg", "03.png", "04.png", "05.png"],
       "Deans Apartments",
     ),
+    story: {
+      paragraph:
+        "Established residential apartments on Old Bara Road, in the same University Town corridor the group has built in for two decades.",
+      image: "/images/developments/gallery/apartments/01.jpg",
+      imageAlt: "Deans Apartments",
+    },
   },
   {
     slug: "apartments-one",
@@ -100,6 +119,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg"],
       "Deans Apartments One",
     ),
+    story: {
+      paragraph:
+        "The group's first Islamabad residential address in Sector G-11/3 — 97 apartments and 2 penthouses, built to the same standard as the Peshawar portfolio.",
+      image: "/images/developments/gallery/apartments-one/01.jpg",
+      imageAlt: "Deans Apartments One",
+    },
   },
   {
     slug: "medicine-center",
@@ -120,6 +145,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.jpg", "03.jpg"],
       "Deans Medicine Center",
     ),
+    story: {
+      paragraph:
+        "A dedicated medical retail address in Hayatabad — 24 shops and 18 clinics across four levels, giving pharmacies, labs and specialists one address instead of a scattered strip.",
+      image: "/images/developments/gallery/medicine-center/03.jpg",
+      imageAlt: "Deans Medicine Center",
+    },
   },
   {
     slug: "commercial-center",
@@ -149,6 +180,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ],
       "Deans Commercial Center",
     ),
+    story: {
+      paragraph:
+        "Eight floors of offices over 49 ground and lower-ground shops on Ashraf Road — built as a single address for Peshawar's professional and retail tenants alike.",
+      image: "/images/developments/gallery/commercial-center/01.jpg",
+      imageAlt: "Deans Commercial Center",
+    },
   },
   {
     slug: "arcade",
@@ -169,6 +206,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.jpg", "03.jpg"],
       "Deans Arcade",
     ),
+    story: {
+      paragraph:
+        "A retail-and-residential address in Sector I-16, Islamabad — the group's newest addition outside Peshawar.",
+      image: "/images/developments/gallery/arcade/01.jpg",
+      imageAlt: "Deans Arcade",
+    },
   },
   {
     slug: "trade-centre",
@@ -187,9 +230,23 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     heroImage: "/images/developments/2d/trade-centre.jpg",
     gallery: gallery(
       "trade-centre",
-      ["01.png", "02.png", "03.jpg", "04.jpg", "05.png", "06.jpg"],
+      [
+        "01.png",
+        "02.png",
+        "03.jpg",
+        "04.jpg",
+        "05.png",
+        "06.jpg",
+        "07.png",
+      ],
       "Deans Trade Centre",
     ),
+    story: {
+      paragraph:
+        "3,200 shops and offices arranged around galleried atriums and escalator courts — won at public auction in 1998 and still Peshawar's commercial centre of gravity today.",
+      image: "/images/developments/gallery/trade-centre/07.png",
+      imageAlt: "Deans Trade Centre interior atrium",
+    },
   },
   {
     slug: "shopping-mall",
@@ -210,6 +267,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.jpg", "03.webp"],
       "Deans Shopping Mall",
     ),
+    story: {
+      paragraph:
+        "350 retail units opposite Rabi Centre on Tariq Road — the group's first move into Karachi, and still its only address outside Khyber Pakhtunkhwa and Islamabad.",
+      image: "/images/developments/gallery/shopping-mall/01.jpg",
+      imageAlt: "Deans Shopping Mall",
+    },
   },
   {
     slug: "nasir-mansion",
@@ -231,6 +294,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       ["01.jpg", "02.png", "03.png", "04.jpg", "05.jpg", "06.jpg"],
       "Nasir Mansion",
     ),
+    story: {
+      paragraph:
+        "Where it started: 48 shops and 43 offices on Railway Road, built in 1971 and named after the son of the man who built it. The name has stayed on every building since.",
+      image: "/images/developments/gallery/nasir-mansion/04.jpg",
+      imageAlt: "Nasir Mansion",
+    },
   },
   {
     slug: "shahab-flats",
@@ -247,6 +316,12 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     heroImage: "/images/developments/2d/shahab-flats.png",
     gallery: gallery("shahab-flats", ["01.png"], "Shahab Flats"),
+    story: {
+      paragraph:
+        "42 apartments across a multi-tower residential complex on Kohat Road, raised a decade after Nasir Mansion — the group's first move from commercial into housing.",
+      image: "/images/developments/gallery/shahab-flats/01.png",
+      imageAlt: "Shahab Flats",
+    },
   },
 ];
 
