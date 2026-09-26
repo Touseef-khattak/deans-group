@@ -64,7 +64,7 @@ export default function OfficeCards() {
                 src={office.image}
                 alt={office.city}
                 fill
-                className="object-cover"
+                className="object-cover object-bottom"
               />
             </div>
             <h3 className="font-heading text-h3 text-text-primary">
