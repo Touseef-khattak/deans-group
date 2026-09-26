@@ -64,7 +64,7 @@ export default function MainNav() {
     onClick?: () => void;
     stretch?: boolean;
   }) {
-    const active = pathname === href;
+    const active = pathname === href || pathname.startsWith(`${href}/`);
     const stretchClass = stretch ? " lg:flex-1" : "";
     return (
       <Link

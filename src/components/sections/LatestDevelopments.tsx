@@ -4,18 +4,21 @@ import Reveal from "@/components/Reveal";
 
 const projects = [
   {
+    slug: "heights",
     image: "/images/developments/deans-heights.png",
     location: "Hayatabad, Peshawar - In hand",
     name: "Deans Heights",
     description: "5 blocks · 350 apartments · 935,000 sq ft.",
   },
   {
+    slug: "complex",
     image: "/images/developments/deans-complex.png",
     location: "University Road, Peshawar - In hand",
     name: "Deans Complex",
     description: "3 blocks · 216 apartments · 700,000 sq ft.",
   },
   {
+    slug: "commercial-center",
     image: "/images/developments/deans-commercial-center.png",
     location: "Ashraf Road, Peshawar - In hand",
     name: "Deans Commercial Center",
@@ -58,7 +61,7 @@ export default function LatestDevelopments() {
               </p>
             </div>
             <Link
-              href="/developments"
+              href={`/developments/${project.slug}`}
               className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
             >
               View Project

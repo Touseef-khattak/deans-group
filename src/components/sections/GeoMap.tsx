@@ -27,7 +27,7 @@ function popupHtml(loc: GeoLocation) {
       <span class="geo-popup-eyebrow">${escapeHtml(loc.city)}</span>
       <h4 class="geo-popup-title">${escapeHtml(loc.name)}</h4>
       <p class="geo-popup-meta">${escapeHtml(loc.kind)} · ${escapeHtml(loc.status)}</p>
-      <a class="geo-popup-link" href="/projects#prj-${loc.id}">View project &rarr;</a>
+      <a class="geo-popup-link" href="/developments/${loc.id}">View project &rarr;</a>
     </div>
   `;
 }

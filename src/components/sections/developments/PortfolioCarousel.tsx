@@ -2,22 +2,26 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 const projects = [
   {
+    slug: "heights",
     image: "/images/developments/deans-heights.png",
     location: "Hayatabad, Peshawar - In hand",
     name: "Deans Heights",
     description: "5 blocks · 350 apartments · 935,000 sq ft.",
   },
   {
+    slug: "complex",
     image: "/images/developments/deans-complex.png",
     location: "University Road, Peshawar - In hand",
     name: "Deans Complex",
     description: "3 blocks · 216 apartments · 700,000 sq ft.",
   },
   {
+    slug: "shopping-mall",
     image: "/images/developments/deans-shopping-mall.png",
     location: "Main Tariq Road, Karachi - Completed",
     name: "Deans Shopping Mall",
@@ -25,12 +29,14 @@ const projects = [
       "350 premium retail units opposite Rabi Centre, in Karachi's commercial heartland.",
   },
   {
+    slug: "commercial-center",
     image: "/images/developments/deans-commercial-center.png",
     location: "Ashraf Road, Peshawar - In hand",
     name: "Deans Commercial Center",
     description: "110 offices across 8 floors, 49 ground/lower-ground shops.",
   },
   {
+    slug: "trade-centre",
     image: "/images/showcase/deans-trade-centre.png",
     location: "Peshawar Cantt - Completed",
     name: "Deans Trade Centre",
@@ -38,12 +44,14 @@ const projects = [
       "57 kanals. 1.8 million square feet. 3,200 shops and offices under one roof.",
   },
   {
+    slug: "apartments-one",
     image: "/images/skyline/apartments-one.png",
     location: "Sector G-11/3, Islamabad - In hand",
     name: "Deans Apartments One",
     description: "97 apartments + 2 penthouses across 215,505 sq ft.",
   },
   {
+    slug: "medicine-center",
     image: "/images/skyline/medicine-centre.png",
     location: "Phase 4, Hayatabad, Peshawar - In hand",
     name: "Deans Medicine Center",
@@ -51,18 +59,21 @@ const projects = [
       "24 shops and 18 clinics across ground, lower ground and two floors.",
   },
   {
+    slug: "apartments",
     image: "/images/skyline/apartments-one-alt.png",
     location: "Old Bara Road, University Town, Peshawar - In hand",
     name: "Deans Apartments",
     description: "Residential apartments on Old Bara Road, University Town.",
   },
   {
+    slug: "arcade",
     image: "/images/skyline/arcade.png",
     location: "Sector I-16, Islamabad - In hand · 2026",
     name: "Deans Arcade",
     description: "Retail and residential development in Sector I-16.",
   },
   {
+    slug: "nasir-mansion",
     image: "/images/skyline/nasir-mansion.png",
     location: "Railway Road No. 2, Peshawar Cantt - Completed 1971",
     name: "Nasir Mansion",
@@ -70,6 +81,7 @@ const projects = [
       "60,000 sq ft — 48 shops, 43 offices, and the group's first name on a façade.",
   },
   {
+    slug: "shahab-flats",
     // no dedicated photo exists for Shahab Flats in the source design —
     // reusing the Deans Heights photo as the closest same-era residential stand-in
     image: "/images/developments/deans-heights.png",
@@ -149,12 +161,12 @@ export default function PortfolioCarousel() {
                 {project.description}
               </p>
             </div>
-            <button
-              type="button"
+            <Link
+              href={`/developments/${project.slug}`}
               className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
             >
               View Project
-            </button>
+            </Link>
           </div>
         ))}
       </Reveal>
