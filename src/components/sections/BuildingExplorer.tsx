@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Grid, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
@@ -26,6 +27,8 @@ type Box = {
 type Project = {
   no: string;
   name: string;
+  /** slug of the matching /developments/[slug] page */
+  slug: string;
   kind: string;
   status: "run" | "done";
   statusLabel: string;
@@ -113,6 +116,7 @@ const PROJECTS: Project[] = [
   {
     no: "PRJ · 01",
     name: "Deans Heights",
+    slug: "heights",
     kind: "Five residential blocks · Hayatabad, Peshawar",
     status: "run",
     statusLabel: "In hand",
@@ -138,6 +142,7 @@ const PROJECTS: Project[] = [
   {
     no: "PRJ · 02",
     name: "Deans Complex",
+    slug: "complex",
     kind: "Three-block residential complex · University Road, Peshawar",
     status: "run",
     statusLabel: "In hand",
@@ -168,6 +173,7 @@ const PROJECTS: Project[] = [
   {
     no: "PRJ · 03",
     name: "Deans Trade Center",
+    slug: "trade-centre",
     kind: "Retail & corporate landmark · Peshawar Cantt",
     status: "done",
     statusLabel: "Delivered",
@@ -202,6 +208,7 @@ const PROJECTS: Project[] = [
   {
     no: "PRJ · 04",
     name: "Deans Apartment One",
+    slug: "apartments-one",
     kind: "Premium residences · Sector G-11/3, Islamabad",
     status: "run",
     statusLabel: "In hand",
@@ -242,6 +249,7 @@ const PROJECTS: Project[] = [
   {
     no: "PRJ · 05",
     name: "Deans Medicine Center",
+    slug: "medicine-center",
     kind: "Medical & commercial plaza · Phase 4, Hayatabad",
     status: "run",
     statusLabel: "In hand",
@@ -532,12 +540,12 @@ export default function BuildingExplorer() {
               >
                 Download Boucher
               </button>
-              <button
-                type="button"
+              <Link
+                href={`/developments/${project.slug}`}
                 className="flex h-12 flex-1 items-center justify-center border border-primary bg-primary px-4 text-body-sm text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary"
               >
                 Project Details
-              </button>
+              </Link>
             </div>
           </aside>
         </div>
