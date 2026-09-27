@@ -32,8 +32,11 @@ const connectLinks: { label: string; href?: string; external?: boolean }[] = [
   { label: "YouTube" },
 ];
 
-// No pages exist yet for any of these — left as plain labels until they do.
-const legalLinks = ["Terms & Conditions", "Privacy Policy", "Disclaimer"];
+const legalLinks: [string, string][] = [
+  ["Terms & Conditions", "/terms-conditions"],
+  ["Privacy Policy", "/privacy-policy"],
+  ["Disclaimer", "/disclaimer"],
+];
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -110,14 +113,19 @@ export default function Footer() {
           Deans Group Of Companies © {year} All rights reserved.
         </p>
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-          {legalLinks.map((link, i) => (
-            <div key={link} className="flex items-center gap-4 sm:gap-6">
+          {legalLinks.map(([label, href], i) => (
+            <div key={label} className="flex items-center gap-4 sm:gap-6">
               {i > 0 && (
                 <span aria-hidden className="text-text-on-dark/30">
                   |
                 </span>
               )}
-              <p className="text-body-sm text-text-on-dark/70">{link}</p>
+              <Link
+                href={href}
+                className="text-body-sm text-text-on-dark/70 transition-colors hover:text-primary"
+              >
+                {label}
+              </Link>
             </div>
           ))}
         </div>
