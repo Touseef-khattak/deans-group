@@ -79,6 +79,9 @@ export default function OfficeCards() {
                 <p className="text-text-muted">Phone</p>
                 <p className="text-text-primary">{office.phone}</p>
               </div>
+              {/* Hidden per request — re-enable if/when each location gets its
+                  own real sales/leasing contact instead of the current
+                  @deans.com placeholders.
               <div className="flex items-center justify-between text-body-sm">
                 <p className="text-text-muted">Sales</p>
                 <p className="text-text-primary">{office.sales}</p>
@@ -87,12 +90,13 @@ export default function OfficeCards() {
                 <p className="text-text-muted">Leasing</p>
                 <p className="text-text-primary">{office.leasing}</p>
               </div>
+              */}
             </div>
             <a
               href={mapsHref(office.address)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-14 w-[200px] items-center justify-center bg-surface-warm text-button text-primary-active"
+              className="flex h-14 w-full items-center justify-center bg-surface-warm text-button text-primary-active"
             >
               Get Directions
             </a>
