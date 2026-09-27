@@ -3,14 +3,39 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitForm } from "@/lib/submitForm";
 
 export default function NewsletterCta() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { getToken } = useRecaptcha();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitted) return;
-    setSubmitted(true);
+    if (submitted || submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    try {
+      const token = await getToken("newsletter");
+      const formData = new FormData(form);
+      formData.set("formType", "newsletter");
+      formData.set("recaptchaToken", token);
+      const result = await submitForm(formData);
+      if (result.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -37,6 +62,7 @@ export default function NewsletterCta() {
             />
             <input
               type="text"
+              name="name"
               placeholder="Your Full Name"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -51,6 +77,7 @@ export default function NewsletterCta() {
             />
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -65,6 +92,7 @@ export default function NewsletterCta() {
             />
             <input
               type="tel"
+              name="phone"
               placeholder="Phone Number"
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
@@ -78,6 +106,7 @@ export default function NewsletterCta() {
               className="pointer-events-none"
             />
             <select
+              name="whoAreYou"
               defaultValue=""
               className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
             >
@@ -103,15 +132,19 @@ export default function NewsletterCta() {
         <div className="flex flex-wrap items-center gap-6">
           <button
             type="submit"
-            disabled={submitted}
+            disabled={submitted || submitting}
             className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
           >
-            {submitted ? "Subscribed" : "Subscribe"}
+            {submitted ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
           </button>
           {submitted ? (
             <p role="status" className="w-full text-body-sm text-primary sm:w-64">
               Thank you. Your message has reached the team — expect a reply
               within one working day.
+            </p>
+          ) : error ? (
+            <p role="alert" className="w-full text-body-sm text-red-600 sm:w-64">
+              {error}
             </p>
           ) : (
             <p className="w-full text-body-sm text-text-muted sm:w-64">

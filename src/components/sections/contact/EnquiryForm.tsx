@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitForm } from "@/lib/submitForm";
 
 const projects = [
   "Deans Heights",
@@ -20,11 +22,34 @@ const projects = [
 
 export default function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { getToken } = useRecaptcha();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitted) return;
-    setSubmitted(true);
+    if (submitted || submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    try {
+      const token = await getToken("enquiry");
+      const formData = new FormData(form);
+      formData.set("formType", "enquiry");
+      formData.set("recaptchaToken", token);
+      const result = await submitForm(formData);
+      if (result.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -55,6 +80,7 @@ export default function EnquiryForm() {
               />
               <input
                 type="text"
+                name="name"
                 placeholder="Your Full Name"
                 required
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -69,6 +95,7 @@ export default function EnquiryForm() {
               />
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone Number"
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
               />
@@ -82,6 +109,7 @@ export default function EnquiryForm() {
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 required
                 className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -96,6 +124,7 @@ export default function EnquiryForm() {
                 className="pointer-events-none"
               />
               <select
+                name="country"
                 defaultValue=""
                 className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
               >
@@ -126,6 +155,7 @@ export default function EnquiryForm() {
                 className="pointer-events-none"
               />
               <select
+                name="enquiringAbout"
                 defaultValue=""
                 className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
               >
@@ -157,6 +187,7 @@ export default function EnquiryForm() {
                 className="pointer-events-none"
               />
               <select
+                name="project"
                 defaultValue=""
                 className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
               >
@@ -178,6 +209,7 @@ export default function EnquiryForm() {
               />
             </div>
             <textarea
+              name="message"
               placeholder="Type your message here..."
               className="h-[112px] w-full border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
@@ -185,15 +217,20 @@ export default function EnquiryForm() {
 
           <button
             type="submit"
-            disabled={submitted}
+            disabled={submitted || submitting}
             className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
           >
-            {submitted ? "Sent" : "Send Enquiry"}
+            {submitted ? "Sent" : submitting ? "Sending…" : "Send Enquiry"}
           </button>
           {submitted && (
             <p role="status" className="text-body-sm text-primary">
               Thank you. Your enquiry has reached the team — expect a reply
               within one working day.
+            </p>
+          )}
+          {error && (
+            <p role="alert" className="text-body-sm text-red-600">
+              {error}
             </p>
           )}
         </form>
