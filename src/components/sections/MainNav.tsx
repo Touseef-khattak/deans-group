@@ -202,19 +202,25 @@ export default function MainNav() {
       </a>
     </div>
 
-    {menuOpen && (
-      <div className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-background px-4 py-6 lg:hidden">
-        {[...leftLinks, ...rightLinks].map(([en, ur, href]) => (
-          <NavLink
-            key={en}
-            en={en}
-            ur={ur}
-            href={href}
-            onClick={() => setMenuOpen(false)}
-          />
-        ))}
-      </div>
-    )}
+    <div
+      aria-hidden={!menuOpen}
+      className={
+        (menuOpen
+          ? "opacity-100 translate-x-0 pointer-events-auto"
+          : "opacity-0 -translate-x-8 pointer-events-none") +
+        " fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-background px-4 pt-10 pb-6 transition-[opacity,transform] duration-300 ease-out lg:hidden"
+      }
+    >
+      {[...leftLinks, ...rightLinks].map(([en, ur, href]) => (
+        <NavLink
+          key={en}
+          en={en}
+          ur={ur}
+          href={href}
+          onClick={() => setMenuOpen(false)}
+        />
+      ))}
+    </div>
     </>
   );
 }
