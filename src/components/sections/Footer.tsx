@@ -33,16 +33,11 @@ const connectLinks: { label: string; href?: string; external?: boolean }[] = [
 ];
 
 // No pages exist yet for any of these — left as plain labels until they do.
-const legalLinks = [
-  "Company Profile",
-  "Annual Report",
-  "Client Names",
-  "Privacy & Policy",
-  "Site Project News",
-];
+const legalLinks = ["Terms & Conditions", "Privacy Policy", "Disclaimer"];
 
 export default function Footer() {
   const { lang } = useLanguage();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="bg-primary-active px-4 py-10 sm:px-6 md:px-10 lg:px-20 lg:py-16">
@@ -111,12 +106,19 @@ export default function Footer() {
       </div>
 
       <div className="flex flex-col items-start gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-body-sm text-text-on-dark/70">Deans Group Of Companies © 2026</p>
-        <div className="flex flex-wrap gap-4 sm:gap-6">
-          {legalLinks.map((link) => (
-            <p key={link} className="text-body-sm text-text-on-dark/70">
-              {link}
-            </p>
+        <p className="text-body-sm text-text-on-dark/70">
+          Deans Group Of Companies © {year} All rights reserved.
+        </p>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          {legalLinks.map((link, i) => (
+            <div key={link} className="flex items-center gap-4 sm:gap-6">
+              {i > 0 && (
+                <span aria-hidden className="text-text-on-dark/30">
+                  |
+                </span>
+              )}
+              <p className="text-body-sm text-text-on-dark/70">{link}</p>
+            </div>
           ))}
         </div>
       </div>
