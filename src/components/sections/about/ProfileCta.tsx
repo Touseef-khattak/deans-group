@@ -6,7 +6,7 @@ const downloads = [
   {
     label: "Group Profile",
     value: "PDF — request a copy",
-    href: "mailto:info@deansgroupofcompanies.com?subject=Group%20Profile%20request",
+    href: "mailto:contact@deansgroupofcompanies.com?subject=Group%20Profile%20request",
   },
   { label: "Portfolio", value: "All 11 projects", href: "/developments" },
 ];

@@ -42,7 +42,7 @@ function emailShell(title: string, bodyHtml: string): string {
             <tr>
               <td style="background-color:${CREAM}; padding:20px 32px; font-size:12px; color:${TEXT_SECONDARY};">
                 <p style="margin:0 0 4px;">Deans Group of Companies</p>
-                <p style="margin:0 0 4px;">info@deansgroupofcompanies.com &middot; WhatsApp: +92 316 3632738</p>
+                <p style="margin:0 0 4px;">contact@deansgroupofcompanies.com &middot; WhatsApp: +92 316 3632738</p>
                 <p style="margin:0; color:${TEXT_MUTED};">This is an automated message from deansgroupofcompanies.com</p>
               </td>
             </tr>

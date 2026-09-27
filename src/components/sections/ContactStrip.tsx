@@ -14,8 +14,8 @@ const contacts = [
   },
   {
     label: "Direct Email",
-    value: "info@deansgroupofcompanies.com",
-    href: "mailto:info@deansgroupofcompanies.com",
+    value: "contact@deansgroupofcompanies.com",
+    href: "mailto:contact@deansgroupofcompanies.com",
   },
 ];
 
