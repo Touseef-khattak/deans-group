@@ -90,6 +90,7 @@ export default function MainNav() {
   }
 
   return (
+    <>
     <div
       className={
         scrolled
@@ -199,20 +200,21 @@ export default function MainNav() {
           />
         </svg>
       </a>
-
-      {menuOpen && (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-background px-4 py-6 lg:hidden">
-          {[...leftLinks, ...rightLinks].map(([en, ur, href]) => (
-            <NavLink
-              key={en}
-              en={en}
-              ur={ur}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-            />
-          ))}
-        </div>
-      )}
     </div>
+
+    {menuOpen && (
+      <div className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-background px-4 py-6 lg:hidden">
+        {[...leftLinks, ...rightLinks].map(([en, ur, href]) => (
+          <NavLink
+            key={en}
+            en={en}
+            ur={ur}
+            href={href}
+            onClick={() => setMenuOpen(false)}
+          />
+        ))}
+      </div>
+    )}
+    </>
   );
 }
