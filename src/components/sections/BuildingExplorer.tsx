@@ -552,18 +552,18 @@ export default function BuildingExplorer() {
       </Reveal>
 
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
+        <Link
+          href="/contact"
           className="flex h-12 items-center justify-center border border-surface-warm bg-surface-warm px-6 text-body-sm text-text-primary transition-colors duration-300 hover:border-primary hover:text-primary"
         >
           Contact Us
-        </button>
-        <button
-          type="button"
+        </Link>
+        <Link
+          href="/developments"
           className="flex h-12 items-center justify-center border border-primary bg-primary px-6 text-body-sm text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary"
         >
           View All Projects
-        </button>
+        </Link>
       </div>
     </div>
   );
