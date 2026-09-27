@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitForm } from "@/lib/submitForm";
 
 const positions = [
   "Senior Civil Engineer",
@@ -14,12 +16,36 @@ const positions = [
 
 export default function ApplicationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const { getToken } = useRecaptcha();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitted) return;
-    setSubmitted(true);
+    if (submitted || submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    try {
+      const token = await getToken("application");
+      const formData = new FormData(form);
+      formData.set("formType", "application");
+      formData.set("recaptchaToken", token);
+      const result = await submitForm(formData);
+      if (result.ok) {
+        setSubmitted(true);
+        setFileName(null);
+        form.reset();
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -49,6 +75,7 @@ export default function ApplicationForm() {
             />
             <input
               type="text"
+              name="name"
               placeholder="Your Full Name"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -63,6 +90,7 @@ export default function ApplicationForm() {
             />
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -77,6 +105,7 @@ export default function ApplicationForm() {
               className="pointer-events-none"
             />
             <select
+              name="position"
               defaultValue=""
               className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
             >
@@ -107,12 +136,14 @@ export default function ApplicationForm() {
             <Image src="/images/icons/upload.svg" alt="" width={14} height={12} />
             <input
               type="file"
+              name="cv"
               accept=".pdf,.doc,.docx"
               className="hidden"
               onChange={(e) => setFileName(e.target.files?.[0]?.name ?? null)}
             />
           </label>
           <textarea
+            name="message"
             placeholder="Type your message here..."
             className="h-[112px] w-full border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
           />
@@ -120,15 +151,20 @@ export default function ApplicationForm() {
 
         <button
           type="submit"
-          disabled={submitted}
+          disabled={submitted || submitting}
           className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
         >
-          {submitted ? "Sent" : "Apply Now"}
+          {submitted ? "Sent" : submitting ? "Sending…" : "Apply Now"}
         </button>
         {submitted && (
           <p role="status" className="text-body-sm text-primary">
             Thank you. Your application has reached the team — expect a
             reply within one working day.
+          </p>
+        )}
+        {error && (
+          <p role="alert" className="text-body-sm text-red-600">
+            {error}
           </p>
         )}
       </form>

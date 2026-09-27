@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitForm } from "@/lib/submitForm";
 
 export default function ConsultationForm({
   heading = "Not sure which company you need? Ask us.",
@@ -12,11 +14,34 @@ export default function ConsultationForm({
   id?: string;
 }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { getToken } = useRecaptcha();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitted) return;
-    setSubmitted(true);
+    if (submitted || submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    try {
+      const token = await getToken("consultation");
+      const formData = new FormData(form);
+      formData.set("formType", "consultation");
+      formData.set("recaptchaToken", token);
+      const result = await submitForm(formData);
+      if (result.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -46,6 +71,7 @@ export default function ConsultationForm({
             />
             <input
               type="text"
+              name="name"
               placeholder="Your Full Name"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
@@ -60,12 +86,14 @@ export default function ConsultationForm({
             />
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               required
               className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
             />
           </div>
           <textarea
+            name="message"
             placeholder="Type your message here..."
             className="h-[112px] border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none sm:col-span-2"
           />
@@ -73,15 +101,20 @@ export default function ConsultationForm({
 
         <button
           type="submit"
-          disabled={submitted}
+          disabled={submitted || submitting}
           className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
         >
-          {submitted ? "Sent" : "Request Consultation"}
+          {submitted ? "Sent" : submitting ? "Sending…" : "Request Consultation"}
         </button>
         {submitted && (
           <p role="status" className="text-body-sm text-primary">
             Thank you. Your message has reached the team — expect a reply
             within one working day.
+          </p>
+        )}
+        {error && (
+          <p role="alert" className="text-body-sm text-red-600">
+            {error}
           </p>
         )}
       </form>
