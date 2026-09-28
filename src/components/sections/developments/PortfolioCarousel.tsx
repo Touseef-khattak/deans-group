@@ -92,24 +92,69 @@ const projects = [
 const VISIBLE = 4;
 const AUTOPLAY_MS = 4500;
 
+type ProjectData = (typeof projects)[number];
+
+function ProjectCard({ project }: { project: ProjectData }) {
+  return (
+    <div className="group flex h-full flex-col gap-6 border border-border bg-background p-4 transition-shadow hover:border-primary hover:shadow-lg">
+      <div className="relative h-[280px] w-full">
+        <Image
+          src={project.image}
+          alt={project.name}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="flex flex-col gap-3">
+        <p className="font-cascadia text-body-sm text-text-muted">
+          {project.location}
+        </p>
+        <h3 className="font-heading text-h3 text-text-primary">
+          {project.name}
+        </h3>
+        <p className="text-body-md text-text-secondary">
+          {project.description}
+        </p>
+      </div>
+      <Link
+        href={`/developments/${project.slug}`}
+        className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
+      >
+        View Project
+      </Link>
+    </div>
+  );
+}
+
 export default function PortfolioCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+    // Carousel windowing/autoplay is desktop/tablet-only — on mobile the
+    // full portfolio renders as a plain static list instead (see below).
+    const mq = window.matchMedia("(max-width: 639px)");
+    setIsMobile(mq.matches);
+    function onChange(e: MediaQueryListEvent) {
+      setIsMobile(e.matches);
+    }
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   // autoplay — advances one tile at a time, loops infinitely, pauses on hover
   useEffect(() => {
-    if (paused || reduced) return;
+    if (paused || reduced || isMobile) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % projects.length);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [paused, reduced, tick]);
+  }, [paused, reduced, isMobile, tick]);
 
   function goTo(i: number) {
     setIndex((i + projects.length) % projects.length);
@@ -131,45 +176,24 @@ export default function PortfolioCarousel() {
         The full portfolio
       </h2>
 
-      <Reveal
-        stagger
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {visible.map((project) => (
-          <div
-            key={project.name}
-            className="group flex h-full flex-col gap-6 border border-border bg-background p-4 transition-shadow hover:border-primary hover:shadow-lg"
-          >
-            <div className="relative h-[280px] w-full">
-              <Image
-                src={project.image}
-                alt={project.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="font-cascadia text-body-sm text-text-muted">
-                {project.location}
-              </p>
-              <h3 className="font-heading text-h3 text-text-primary">
-                {project.name}
-              </h3>
-              <p className="text-body-md text-text-secondary">
-                {project.description}
-              </p>
-            </div>
-            <Link
-              href={`/developments/${project.slug}`}
-              className="mt-auto flex h-14 w-[200px] items-center justify-center bg-secondary text-button text-primary-active transition-colors group-hover:bg-primary group-hover:text-text-on-dark"
-            >
-              View Project
-            </Link>
-          </div>
+      {/* Mobile: plain static list, no autoplay/windowing/controls */}
+      <Reveal stagger className="flex flex-col gap-6 sm:hidden">
+        {projects.map((project) => (
+          <ProjectCard key={project.name} project={project} />
         ))}
       </Reveal>
 
-      <div className="flex items-center justify-end gap-3">
+      {/* sm and up: rotating 4-up carousel window */}
+      <Reveal
+        stagger
+        className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {visible.map((project) => (
+          <ProjectCard key={project.name} project={project} />
+        ))}
+      </Reveal>
+
+      <div className="hidden items-center justify-end gap-3 sm:flex">
         <span className="font-cascadia text-body-sm text-text-secondary">
           {String(index + 1).padStart(2, "0")} /{" "}
           {String(projects.length).padStart(2, "0")}
