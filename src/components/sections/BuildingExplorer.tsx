@@ -411,7 +411,7 @@ export default function BuildingExplorer() {
       </Reveal>
 
       <Reveal className="flex flex-col border border-border">
-        <div className="flex flex-wrap">
+        <div className="no-scrollbar flex flex-nowrap overflow-x-auto sm:flex-wrap sm:overflow-visible">
           {PROJECTS.map((p, i) => (
             <button
               key={p.name}
@@ -419,8 +419,8 @@ export default function BuildingExplorer() {
               onClick={() => selectProject(i)}
               className={
                 i === active
-                  ? "flex min-w-[110px] flex-1 flex-col gap-1 bg-primary-hover px-3 py-3 text-left sm:px-6 sm:py-4"
-                  : "flex min-w-[110px] flex-1 flex-col gap-1 border-r border-b border-border px-3 py-3 text-left transition-colors hover:bg-surface-warm sm:px-6 sm:py-4"
+                  ? "flex min-w-[140px] shrink-0 flex-col gap-1 bg-primary-hover px-3 py-3 text-left sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
+                  : "flex min-w-[140px] shrink-0 flex-col gap-1 border-r border-b border-border px-3 py-3 text-left transition-colors hover:bg-surface-warm sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
               }
             >
               <p
