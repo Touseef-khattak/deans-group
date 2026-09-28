@@ -446,7 +446,7 @@ export default function BuildingExplorer() {
         </div>
 
         <div className="flex flex-col lg:flex-row">
-          <div className="bld-stage relative h-[360px] flex-1 touch-none overflow-hidden sm:h-[460px] lg:h-[634px]">
+          <div className="bld-stage relative h-[440px] flex-1 touch-none overflow-hidden sm:h-[460px] lg:h-[634px]">
             <Canvas shadows dpr={[1, 1.75]}>
               <Scene
                 project={project}
@@ -457,7 +457,7 @@ export default function BuildingExplorer() {
               />
             </Canvas>
 
-            <div className="pointer-events-none absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 bg-primary-active px-4 py-2 font-cascadia text-caption tracking-wide text-text-on-dark uppercase">
+            <div className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 bg-primary-active px-4 py-2 font-cascadia text-caption tracking-wide text-text-on-dark uppercase sm:bottom-4">
               <span className="text-status-warning">◉</span> Drag to orbit ·
               full 360° · every elevation
             </div>
