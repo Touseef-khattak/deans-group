@@ -419,8 +419,8 @@ export default function BuildingExplorer() {
               onClick={() => selectProject(i)}
               className={
                 i === active
-                  ? "flex min-w-[140px] shrink-0 flex-col gap-1 bg-primary-hover px-3 py-3 text-left sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
-                  : "flex min-w-[140px] shrink-0 flex-col gap-1 border-r border-b border-border px-3 py-3 text-left transition-colors hover:bg-surface-warm sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
+                  ? "flex w-2/3 shrink-0 flex-col gap-1 bg-primary-hover px-3 py-3 text-left sm:w-auto sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
+                  : "flex w-2/3 shrink-0 flex-col gap-1 border-r border-b border-border px-3 py-3 text-left transition-colors hover:bg-surface-warm sm:w-auto sm:min-w-[110px] sm:flex-1 sm:shrink sm:px-6 sm:py-4"
               }
             >
               <p
@@ -446,7 +446,7 @@ export default function BuildingExplorer() {
         </div>
 
         <div className="flex flex-col lg:flex-row">
-          <div className="bld-stage relative h-[440px] flex-1 touch-none overflow-hidden sm:h-[460px] lg:h-[634px]">
+          <div className="bld-stage relative h-[440px] touch-none overflow-hidden sm:h-[460px] lg:h-[634px] lg:flex-1">
             <Canvas shadows dpr={[1, 1.75]}>
               <Scene
                 project={project}
