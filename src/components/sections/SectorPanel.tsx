@@ -16,6 +16,7 @@ export default function SectorPanel({
   buttonLabel,
   buttonHref,
   reverse = false,
+  mobileImageFirst = false,
   tone = "light",
 }: {
   id?: string;
@@ -30,10 +31,17 @@ export default function SectorPanel({
   buttonLabel?: string;
   buttonHref?: string;
   reverse?: boolean;
+  /** Show the image before the text on mobile only, without touching the lg:flex-row order. */
+  mobileImageFirst?: boolean;
   tone?: "light" | "warm";
 }) {
   const content = (
-    <div className="flex flex-1 flex-col items-start gap-6">
+    <div
+      className={
+        (mobileImageFirst ? "order-2 lg:order-none " : "") +
+        "flex flex-1 flex-col items-start gap-6"
+      }
+    >
       <div className="flex w-full items-center gap-4">
         <p className="font-cascadia text-body-md text-primary">{number}</p>
         <div className="h-px w-12 bg-border" />
@@ -65,7 +73,12 @@ export default function SectorPanel({
   );
 
   const media = (
-    <div className="flex w-full shrink-0 flex-col gap-3 lg:w-[600px]">
+    <div
+      className={
+        (mobileImageFirst ? "order-1 lg:order-none " : "") +
+        "flex w-full shrink-0 flex-col gap-3 lg:w-[600px]"
+      }
+    >
       <div className="relative h-[260px] w-full sm:h-[320px] lg:h-[400px]">
         <Image src={image} alt={imageAlt} fill className="object-cover" />
       </div>
