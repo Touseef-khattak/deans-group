@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <div className="relative flex h-[360px] items-center justify-center gap-11 overflow-hidden bg-primary p-4 sm:h-[380px] sm:px-6 sm:py-10 md:p-10 lg:h-[400px] lg:p-20">
+    <div className="relative flex h-[400px] items-center justify-center gap-11 overflow-hidden bg-primary p-4 sm:h-[380px] sm:px-6 sm:py-10 md:p-10 lg:h-[400px] lg:p-20">
       <Image
         src="/images/about/hero-bg.png"
         alt="A Deans Group development at dusk"
