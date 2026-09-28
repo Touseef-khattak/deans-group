@@ -24,6 +24,7 @@ export default function HospitalityPage() {
         imageAlt="A Deans Hospitality hotel room"
         buttonLabel="View & Book"
         buttonHref="#booking"
+        mobileImageFirst
       />
       <SectorPanel
         number="02"
