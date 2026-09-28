@@ -107,6 +107,39 @@ select option {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+/* ---- Partners marquee (Built with, & for) ---- */
+@keyframes partners-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.partners-track {
+  animation: partners-marquee 28s linear infinite;
+}
+.partners-fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .partners-track {
+    animation: none;
+  }
+}
 
 /* ---- 3D building-massing materials (Building Explorer) ---- */
 .bld-stage {

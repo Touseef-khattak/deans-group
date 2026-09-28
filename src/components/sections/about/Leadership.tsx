@@ -10,7 +10,7 @@ export default function Leadership() {
             <div className="absolute top-5 left-[3.58%] h-full w-[96.42%] bg-primary" />
             <div className="relative h-full w-[96.42%]">
               <Image
-                src="/images/about/nasir-jamal.png"
+                src="/images/about/placeholder-person.png"
                 alt="Mr. Nasir Jamal"
                 fill
                 className="object-cover"

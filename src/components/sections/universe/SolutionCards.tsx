@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 
 const cards = [
   {
-    image: "/images/deans-universe/sector-developers.png",
+    image: "/images/deans-universe/sector-developers.jpeg",
     eyebrow: "Real estate & construction",
     name: "Deans Developers",
     description:
