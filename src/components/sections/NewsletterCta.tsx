@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import FormSuccess from "@/components/FormSuccess";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { submitForm } from "@/lib/submitForm";
 
@@ -52,106 +53,113 @@ export default function NewsletterCta() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-8">
-        <div className="flex flex-wrap gap-4">
-          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-            <Image
-              src="/images/icons/user-circle.svg"
-              alt=""
-              width={16}
-              height={16}
-            />
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Full Name"
-              required
-              className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-            />
-          </div>
-          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-            <Image
-              src="/images/icons/mail.svg"
-              alt=""
-              width={16}
-              height={16}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-            />
-          </div>
-          <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-            <Image
-              src="/images/icons/phone-outline.svg"
-              alt=""
-              width={16}
-              height={16}
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-            />
-          </div>
-          <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-            <Image
-              src="/images/icons/click.svg"
-              alt=""
-              width={16}
-              height={16}
-              className="pointer-events-none"
-            />
-            <select
-              name="whoAreYou"
-              defaultValue=""
-              className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
-            >
-              <option value="" disabled>
-                Select, Who are you?
-              </option>
-              <option value="investor">An investor in Pakistan</option>
-              <option value="overseas">An overseas Pakistani investor</option>
-              <option value="home">Looking for a home</option>
-              <option value="tenant">A commercial tenant</option>
-              <option value="partner">A supplier or partner</option>
-            </select>
-            <Image
-              src="/images/icons/chevron-down.svg"
-              alt=""
-              width={12}
-              height={6}
-              className="pointer-events-none ml-auto"
-            />
-          </div>
-        </div>
+        {submitted ? (
+          <FormSuccess
+            message="Thank you. Your message has reached the team — expect a reply within one working day."
+            onReset={() => {
+              setSubmitted(false);
+              setError(null);
+            }}
+          />
+        ) : (
+          <>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                <Image
+                  src="/images/icons/user-circle.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Full Name"
+                  required
+                  className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                />
+              </div>
+              <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                <Image
+                  src="/images/icons/mail.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                />
+              </div>
+              <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                <Image
+                  src="/images/icons/phone-outline.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                />
+              </div>
+              <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                <Image
+                  src="/images/icons/click.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="pointer-events-none"
+                />
+                <select
+                  name="whoAreYou"
+                  defaultValue=""
+                  className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+                >
+                  <option value="" disabled>
+                    Select, Who are you?
+                  </option>
+                  <option value="investor">An investor in Pakistan</option>
+                  <option value="overseas">An overseas Pakistani investor</option>
+                  <option value="home">Looking for a home</option>
+                  <option value="tenant">A commercial tenant</option>
+                  <option value="partner">A supplier or partner</option>
+                </select>
+                <Image
+                  src="/images/icons/chevron-down.svg"
+                  alt=""
+                  width={12}
+                  height={6}
+                  className="pointer-events-none ml-auto"
+                />
+              </div>
+            </div>
 
-        <div className="flex flex-wrap items-center gap-6">
-          <button
-            type="submit"
-            disabled={submitted || submitting}
-            className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
-          >
-            {submitted ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
-          </button>
-          {submitted ? (
-            <p role="status" className="w-full text-body-sm text-primary sm:w-64">
-              Thank you. Your message has reached the team — expect a reply
-              within one working day.
-            </p>
-          ) : error ? (
-            <p role="alert" className="w-full text-body-sm text-red-600 sm:w-64">
-              {error}
-            </p>
-          ) : (
-            <p className="w-full text-body-sm text-text-muted sm:w-64">
-              You can unsubscribe from either channel at any time.
-            </p>
-          )}
-        </div>
+            <div className="flex flex-wrap items-center gap-6">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
+              >
+                {submitting ? "Sending…" : "Subscribe"}
+              </button>
+              {error ? (
+                <p role="alert" className="w-full text-body-sm text-red-600 sm:w-64">
+                  {error}
+                </p>
+              ) : (
+                <p className="w-full text-body-sm text-text-muted sm:w-64">
+                  You can unsubscribe from either channel at any time.
+                </p>
+              )}
+            </div>
+          </>
+        )}
       </form>
     </Reveal>
   );

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import FormSuccess from "@/components/FormSuccess";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { submitForm } from "@/lib/submitForm";
 
@@ -70,168 +71,174 @@ export default function EnquiryForm() {
           onSubmit={handleSubmit}
           className="flex w-full flex-col gap-6 lg:w-[766px]"
         >
-          <div className="flex flex-wrap gap-4">
-            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/user-circle.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Full Name"
-                required
-                className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-              />
-            </div>
-            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/phone-outline.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-              />
-            </div>
-            <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/mail.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
-              />
-            </div>
-            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/click.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="pointer-events-none"
-              />
-              <select
-                name="country"
-                defaultValue=""
-                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
-              >
-                <option value="" disabled>
-                  Select Country
-                </option>
-                <option value="pk">Pakistan</option>
-                <option value="ae">UAE</option>
-                <option value="sa">Saudi Arabia</option>
-                <option value="uk">UK</option>
-                <option value="us">USA</option>
-                <option value="other">Other</option>
-              </select>
-              <Image
-                src="/images/icons/chevron-down.svg"
-                alt=""
-                width={12}
-                height={6}
-                className="pointer-events-none ml-auto"
-              />
-            </div>
-            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/click.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="pointer-events-none"
-              />
-              <select
-                name="enquiringAbout"
-                defaultValue=""
-                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
-              >
-                <option value="" disabled>
-                  Enquiring about
-                </option>
-                <option value="investor">An investor in Pakistan</option>
-                <option value="overseas">
-                  An overseas Pakistani investor
-                </option>
-                <option value="home">Looking for a home</option>
-                <option value="tenant">A commercial tenant</option>
-                <option value="partner">A supplier or partner</option>
-              </select>
-              <Image
-                src="/images/icons/chevron-down.svg"
-                alt=""
-                width={12}
-                height={6}
-                className="pointer-events-none ml-auto"
-              />
-            </div>
-            <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
-              <Image
-                src="/images/icons/click.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="pointer-events-none"
-              />
-              <select
-                name="project"
-                defaultValue=""
-                className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
-              >
-                <option value="" disabled>
-                  Select Project
-                </option>
-                {projects.map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
-                ))}
-              </select>
-              <Image
-                src="/images/icons/chevron-down.svg"
-                alt=""
-                width={12}
-                height={6}
-                className="pointer-events-none ml-auto"
-              />
-            </div>
-            <textarea
-              name="message"
-              placeholder="Type your message here..."
-              className="h-[112px] w-full border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+          {submitted ? (
+            <FormSuccess
+              message="Thank you. Your enquiry has reached the team — expect a reply within one working day."
+              onReset={() => {
+                setSubmitted(false);
+                setError(null);
+              }}
             />
-          </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/user-circle.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Full Name"
+                    required
+                    className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                  />
+                </div>
+                <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/phone-outline.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                  />
+                </div>
+                <div className="flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/mail.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    className="w-full text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                  />
+                </div>
+                <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/click.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="pointer-events-none"
+                  />
+                  <select
+                    name="country"
+                    defaultValue=""
+                    className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+                  >
+                    <option value="" disabled>
+                      Select Country
+                    </option>
+                    <option value="pk">Pakistan</option>
+                    <option value="ae">UAE</option>
+                    <option value="sa">Saudi Arabia</option>
+                    <option value="uk">UK</option>
+                    <option value="us">USA</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <Image
+                    src="/images/icons/chevron-down.svg"
+                    alt=""
+                    width={12}
+                    height={6}
+                    className="pointer-events-none ml-auto"
+                  />
+                </div>
+                <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/click.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="pointer-events-none"
+                  />
+                  <select
+                    name="enquiringAbout"
+                    defaultValue=""
+                    className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+                  >
+                    <option value="" disabled>
+                      Enquiring about
+                    </option>
+                    <option value="investor">An investor in Pakistan</option>
+                    <option value="overseas">
+                      An overseas Pakistani investor
+                    </option>
+                    <option value="home">Looking for a home</option>
+                    <option value="tenant">A commercial tenant</option>
+                    <option value="partner">A supplier or partner</option>
+                  </select>
+                  <Image
+                    src="/images/icons/chevron-down.svg"
+                    alt=""
+                    width={12}
+                    height={6}
+                    className="pointer-events-none ml-auto"
+                  />
+                </div>
+                <div className="relative flex h-14 w-full items-center gap-2.5 border border-border px-4 sm:w-[375px]">
+                  <Image
+                    src="/images/icons/click.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="pointer-events-none"
+                  />
+                  <select
+                    name="project"
+                    defaultValue=""
+                    className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent pl-[42px] pr-8 text-body-sm text-text-muted outline-none"
+                  >
+                    <option value="" disabled>
+                      Select Project
+                    </option>
+                    {projects.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                  <Image
+                    src="/images/icons/chevron-down.svg"
+                    alt=""
+                    width={12}
+                    height={6}
+                    className="pointer-events-none ml-auto"
+                  />
+                </div>
+                <textarea
+                  name="message"
+                  placeholder="Type your message here..."
+                  className="h-[112px] w-full border border-border px-4 py-2.5 text-body-sm text-text-muted placeholder:text-text-muted outline-none"
+                />
+              </div>
 
-          <button
-            type="submit"
-            disabled={submitted || submitting}
-            className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
-          >
-            {submitted ? "Sent" : submitting ? "Sending…" : "Send Enquiry"}
-          </button>
-          {submitted && (
-            <p role="status" className="text-body-sm text-primary">
-              Thank you. Your enquiry has reached the team — expect a reply
-              within one working day.
-            </p>
-          )}
-          {error && (
-            <p role="alert" className="text-body-sm text-red-600">
-              {error}
-            </p>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="flex h-14 w-[200px] items-center justify-center border border-primary bg-primary text-button text-text-on-dark transition-colors duration-300 hover:bg-background hover:text-primary disabled:opacity-50"
+              >
+                {submitting ? "Sending…" : "Send Enquiry"}
+              </button>
+              {error && (
+                <p role="alert" className="text-body-sm text-red-600">
+                  {error}
+                </p>
+              )}
+            </>
           )}
         </form>
       </div>
